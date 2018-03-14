@@ -35,12 +35,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url('/') }}">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url('/admin') }}">Admin</a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">首页</a></li>
 
           </ul>
         </div>
@@ -104,7 +99,7 @@
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="/js/clean-blog.js"></script>
+    <script src="/js/clean-blog.min.js"></script>
 
   </body>
 

@@ -14,7 +14,7 @@
             <div class="post-heading">
               <h1>{{ $post->title }}</h1>
               <h2 class="subheading">{{ $post->sub_title }}</h2>
-              <span class="meta">Posted by<a href="#">{{ $post->author->name }}</a>on {{ $post->created_at->format('F d, Y')}}</span>
+              <span class="meta">Posted by <a href="#">{{ $post->author->name }}</a> on {{ $post->created_at->format('F d, Y')}}</span>
             </div>
           </div>
         </div>
