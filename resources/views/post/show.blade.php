@@ -4,7 +4,7 @@
 
 
 
-@section('header')
+@section('blogheader')
  <!-- Page Header -->
     <header class="masthead" style="background-image: url('/storage/{{ $post->image }}')">
       <div class="overlay"></div>
@@ -22,7 +22,7 @@
     </header>
 @stop
 
-@section('content')
+@section('blogcontent')
 
 
     <!-- Post Content -->

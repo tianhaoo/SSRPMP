@@ -13,7 +13,7 @@
 
 // 首页
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 Route::get('/home', function () {
 	return redirect('/');
