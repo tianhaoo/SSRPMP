@@ -31,7 +31,6 @@
                   <li><a href="#">Web Design</a></li>
                   <li><a href="#">eCommerce</a></li>
                   <li><a href="#">Branding</a></li>
-                  <li><a href="#">API</a></li>
                 </ul>
               </li>
               <li><a href="{{ url('/admin') }}">后台管理</a></li>

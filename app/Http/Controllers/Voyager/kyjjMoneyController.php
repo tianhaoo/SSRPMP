@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Voyager;
 
-use App\CxcyProject;
+use App\KyjjMoney;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ use TCG\Voyager\Events\BreadImagesDeleted;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
 
-class CxcyController extends \TCG\Voyager\Http\Controllers\VoyagerBreadController
+class KyjjMoneyController extends \TCG\Voyager\Http\Controllers\VoyagerBreadController
 {
     use BreadRelationshipParser;
     //***************************************
@@ -233,18 +233,6 @@ class CxcyController extends \TCG\Voyager\Http\Controllers\VoyagerBreadControlle
             return response()->json(['errors' => $val->messages()]);
         }
 
-        $host =  \App\KyjjProject::where('id', $id)->first();
-        if(Auth::user()->role_id != 1) {
-            if(Auth::user()->id != $host->user_id) {
-                return redirect()
-                ->route("voyager.{$dataType->slug}.index")
-                ->with([
-                    'message'    => "只有管理员和项目主持人能编辑项目信息",
-                ]);
-            }
-        }
-        
-
         if (!$request->ajax()) {
             $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
 
@@ -316,7 +304,7 @@ class CxcyController extends \TCG\Voyager\Http\Controllers\VoyagerBreadControlle
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voager::model('DataType')->where('slug', '=', $slugy)->first();
+        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('add', app($dataType->model_name));
@@ -327,8 +315,6 @@ class CxcyController extends \TCG\Voyager\Http\Controllers\VoyagerBreadControlle
         if ($val->fails()) {
             return response()->json(['errors' => $val->messages()]);
         }
-
-
 
         if (!$request->ajax()) {
             $data = $this->insertUpdateData($request, $slug, $dataType->addRows, new $dataType->model_name());

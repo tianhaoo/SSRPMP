@@ -98,6 +98,18 @@ class KyjjController extends \TCG\Voyager\Http\Controllers\VoyagerBreadControlle
             $view = "voyager::$slug.browse";
         }
 
+        // 如果当前用户不是管理员，则只能看到主持人是自己的项目
+        if(Auth::user()->role_id != 1){
+            $arr = array();
+            foreach($dataTypeContent as $item){
+                if ($item->user_id == Auth::user()->id){
+                    array_push($arr, $item);
+                }
+                // 这里将该用户能看到的内容做了处理
+                $dataTypeContent = $arr;
+            }
+        }
+
         return Voyager::view($view, compact(
             'dataType',
             'dataTypeContent',
@@ -233,9 +245,10 @@ class KyjjController extends \TCG\Voyager\Http\Controllers\VoyagerBreadControlle
             return response()->json(['errors' => $val->messages()]);
         }
 
-        $host =  \App\KyjjProject::where('id', $id)->first();
+        // 如果当前用户不是管理员，则只能编辑自己的项目信息
+        $current_project =  \App\KyjjProject::where('id', $id)->first();
         if(Auth::user()->role_id != 1) {
-            if(Auth::user()->id != $host->user_id) {
+            if(Auth::user()->id != $current_project->user_id) {
                 return redirect()
                 ->route("voyager.{$dataType->slug}.index")
                 ->with([
@@ -244,7 +257,7 @@ class KyjjController extends \TCG\Voyager\Http\Controllers\VoyagerBreadControlle
             }
         }
         
-
+        // 如果是管理员则继续
         if (!$request->ajax()) {
             $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
 
