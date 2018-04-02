@@ -34,7 +34,6 @@
                 </ul>
               </li>
               <li><a href="{{ url('/admin') }}">后台管理</a></li>
-              <li><a href="{{ url('/contact') }}">联系我们</a></li>
               @if(Route::has('login'))
                 @auth
                 <li class="btn-cta"><a href="{{ url('/admin/profile') }}"><span>{{ Auth::user()->name }}</span></a></li>

@@ -11,7 +11,7 @@
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
 							<h1>学生科研项目管理平台</h1>
 							<h2>Students Science Research Projects Management Plantform</h2>
-							<p><a class="btn btn-primary btn-lg btn-learn" href="#">Create A Project</a> <a class="btn btn-primary btn-lg popup-vimeo btn-video" href="https://vimeo.com/channels/staffpicks/93951774"><i class="icon-play"></i> Watch Video</a></p>
+							<p><a class="btn btn-primary btn-lg btn-learn" href="#">Create A Project</a> <a class="btn btn-primary btn-lg popup-vimeo btn-video" href="#"><i class="icon-play"></i> Watch Video</a></p>
 						</div>
 					</div>
 				</div>
