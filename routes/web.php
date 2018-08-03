@@ -9,30 +9,56 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'DashController@index')->name('dash');
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'WelcomeController@index')->name('index');
+Route::get('/home', 'HomeController@home')->name('home');
+Route::get('/post/{slug}','WelcomeController@show');
+
+
+
+
 
 //category route
-Route::get('/category-show','CategoryController@read')->name('showcategory');
+Route::prefix('category')->group(function(){
+	Route::get('show','CategoryController@read')->name('showcategory');
 
-Route::get('/category-add','CategoryController@add')->name('addcategory');
+	Route::get('add','CategoryController@add')->name('addcategory');
+});
+
 
 //project route
-Route::get('/my-project','ProjectController@myproject')->name('myproject');
 
-Route::get('/project-detail','ProjectController@read')->name('projectdetail');
+Route::prefix('project')->group(function(){
+	Route::get('my','ProjectController@myproject')->name('myproject');
 
-Route::get('/project-edit','ProjectController@edit')->name('projectedit');
+	Route::get('detail','ProjectController@read')->name('projectdetail');
 
-Route::get('/project-add','ProjectController@add')->name('projectadd');
+	Route::get('edit','ProjectController@edit')->name('projectedit');
 
-Route::get('/project-delete','ProjectController@delete')->name('projectdelete');
+	Route::get('add','ProjectController@add')->name('projectadd');
 
-Route::get('/project-browse','ProjectController@browse')->name('projectbrowse');
+	Route::get('delete','ProjectController@delete')->name('projectdelete');
+
+	Route::get('browse','ProjectController@browse')->name('projectbrowse');
+});
+
+
+//funds route
+Route::prefix('funds')->group(function(){
+	Route::get('browse','FundsController@browse')->name('showfundsapplication');
+
+	Route::get('approved','FundsController@approved')->name('approved');
+
+	Route::get('approving','FundsController@approving')->name('approving');
+
+	Route::get('detail','FundsController@detail')->name('fundsdetail');
+
+	Route::get('edit','FundsController@edit')->name('fundsedit');
+
+	Route::get('delete','FundsController@delete')->name('fundsdelete');
+});
+
 
 
 // [your site path]/Http/routes.php

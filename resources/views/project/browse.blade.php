@@ -1,5 +1,7 @@
 @extends('layouts.ssrpmp')
 
+
+
 @section('css')
     <!-- Bootstrap -->
     <link href="{{ URL::asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -13,8 +15,6 @@
     <!-- Custom Theme Style -->
     <link href="{{ URL::asset('build/css/custom.min.css') }}" rel="stylesheet">
 @endsection
-
-
 
 @section('content')
 
@@ -67,7 +67,7 @@
                           <td>
                             <ul class="list-inline">
                               <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
+                                <img src="{{ URL::asset('images/user.png') }}" class="avatar" alt="Avatar">
                               </li>
                               <li>
                                 <img src="images/user.png" class="avatar" alt="Avatar">
@@ -388,7 +388,6 @@
         <!-- /page content -->
 @endsection
 
-
 @section('javascript')
     <!-- jQuery -->
     <script src="{{ URL::asset('vendors/jquery/dist/jquery.min.js') }}"></script>
@@ -399,7 +398,7 @@
     <!-- NProgress -->
     <script src="{{ URL::asset('vendors/nprogress/nprogress.js') }}"></script>
     <!-- bootstrap-progressbar -->
-    <script src="{{ URL::asset('vendors/bootstrap-progressbar/bootstrap-progressbar.min.js') }}"></script>
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     
     <!-- Custom Theme Scripts -->
     <script src="{{ URL::asset('build/js/custom.min.js') }}"></script>

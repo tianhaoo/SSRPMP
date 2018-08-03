@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Project;
 
 class ProjectController extends Controller
 {
@@ -40,7 +41,9 @@ class ProjectController extends Controller
 	 */	 
 	 public function myproject()
 	 {
-	 	return view('project.myproject');
+	 	$projects = Project::all();
+	 	return view('project.myproject',['projects' => $projects]);
+
 	 }
 
 	 /**
@@ -58,8 +61,9 @@ class ProjectController extends Controller
 	 * @return void
 	 */	 
 	 public function browse()
-	 {
-	 	return view('project.browse');
+	 { 
+	 	$projects = Project::all();
+	 	return view('project.browse',['projects' => $projects]);
 	 }
 
 

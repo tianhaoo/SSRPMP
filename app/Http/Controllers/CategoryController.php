@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Type;
 
 class CategoryController extends Controller
 {
@@ -23,7 +24,8 @@ class CategoryController extends Controller
 	 */	 
 	 public function read()
 	 {
-	 	return view('category.read');
+	 	$types = Type::all();
+	 	return view('category.read',['types' => $types]);
 	 }
 	 	 /**
 	 * add a new project.

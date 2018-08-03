@@ -24,10 +24,10 @@
                 
                 <ul class="nav side-menu">
                 @guest
-                  <li><a href="{{ route('dash') }}"><i class="fa fa-home"></i> 首页 <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="{{ route('home') }}"><i class="fa fa-home"></i> 首页 <span class="fa fa-chevron-down"></span></a>
                   </li>
                 @else
-                  <li><a  href="{{ route('dash') }}"><i class="fa fa-home"></i> 首页  <span class="fa fa-chevron-down"></span></a>
+                  <li><a  href="{{ route('home') }}"><i class="fa fa-home"></i> 首页  <span class="fa fa-chevron-down"></span></a>
                   </li>
                   <li><a><i class="fa fa-edit"></i> 项目类别 <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -37,17 +37,15 @@
                   </li>
                   <li><a><i class="fa fa-desktop"></i> 项目 <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ route('myproject') }}">所有项目</a></li>
+                      <li><a href="{{ route('projectbrowse') }}">所有项目</a></li>
                       <li><a href="{{ route('myproject') }}">我的项目</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-bar-chart-o"></i> 经费管理 <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart JS</a></li>
-                      <li><a href="chartjs2.html">Chart JS2</a></li>
-                      <li><a href="morisjs.html">Moris JS</a></li>
-                      <li><a href="echarts.html">ECharts</a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
+                      <li><a href="{{ route('showfundsapplication') }}">查看所有经费申请</a></li>
+                      <li><a href="{{ route('approved') }}">已审批</a></li>
+                      <li><a href="{{ route('approving') }}">待审批</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
