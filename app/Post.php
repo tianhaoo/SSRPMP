@@ -11,4 +11,8 @@ class Post extends Model
     {
     	return static::where('slug',$slug)->first();
     }
+
+    public function author(){
+    	return $this->belongsTo(User::class, 'author_id');
+    }
 }

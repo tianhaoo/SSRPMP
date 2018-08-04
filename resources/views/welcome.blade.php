@@ -46,7 +46,7 @@
         <li class="sidebar-brand">
           <a class="js-scroll-trigger" href="{{ route('login') }}">欢迎你, {{ Auth::user()->name }}</a>
         </li>
-        <li class="sidebar-brand">
+        <li class="sidebar-nav-item">
             <a class="js-scroll-trigger" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">
@@ -56,6 +56,9 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
             </form>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="{{ route('post') }}">通知发文</a>
         </li>
         <li class="sidebar-nav-item">
           <a class="js-scroll-trigger" href="{{ route('home') }}">后台管理</a>
@@ -69,9 +72,9 @@
       <div class="container text-center my-auto">
         <h1 class="mb-1">{{ voyager::setting('site.title') }}</h1>
         <h3 class="mb-5">
-          <em>A Free Bootstrap Theme by Start Bootstrap</em>
+          <em>{{ voyager::setting('site.subtitle') }}</em>
         </h3>
-        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+        <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{ route('post')}}">了解更多</a>
       </div>
       <div class="overlay"></div>
     </header>
@@ -81,10 +84,9 @@
       <div class="container text-center">
         <div class="row">
           <div class="col-lg-10 mx-auto">
-            <h2>Stylish Portfolio is the perfect theme for your next project!</h2>
-            <p class="lead mb-5">This theme features a flexible, UX friendly sidebar menu and stock photos from our friends at
-              <a href="https://unsplash.com/">Unsplash</a>!</p>
-            <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">What We Offer</a>
+            <h2>{{ voyager::setting('site.description') }}</h2>
+            <p class="lead mb-5">{{ voyager::setting('site.excerpt') }}</p>
+            <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">我们提供的功能</a>
           </div>
         </div>
       </div>
@@ -143,35 +145,63 @@
     <!-- Callout -->
     <section class="callout">
       <div class="container text-center">
-        <h2 class="mx-auto mb-5">Welcome to
-          <em>your</em>
-          next website!</h2>
-        <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/template-overviews/stylish-portfolio/">Download Now!</a>
+        <h2 class="mx-auto mb-5">现在就开始使用！</h2>
+        <a class="btn btn-primary btn-xl" href="{{ route('register') }}">立即注册!</a>
       </div>
     </section>
 
-    <!-- Portfolio -->
-    <section class="content-section" id="portfolio">
+       <!-- Portfolio -->
+       <section class="content-section" id="portfolio">
       <div class="container">
         <div class="content-section-heading text-center">
-         <!--<h3 class="text-secondary mb-0">Portfolio</h3>-->
-          <h2 class="mb-5">通知发文</h2>
+          <h3 class="text-secondary mb-0">Portfolio</h3>
+          <h2 class="mb-5">优秀项目展示</h2>
         </div>
         <div class="row no-gutters">
-        @foreach($posts as $post) 
-        <div class="col-lg-6">
-            <a class="portfolio-item" href="/post/{{ $post->slug }}">
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="#">
               <span class="caption">
                 <span class="caption-content">
-                  <h2>{{ $post->title }}</h2>
-                  <p class="mb-0">{{ $post->excerpt }}</p>
+                  <h2>Stationary</h2>
+                  <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
                 </span>
               </span>
-              <img class="img-fluid" src="/storage/{{ $post->image }}" alt="">
+              <img class="img-fluid" src="images/portfolio-1.jpg" alt="">
             </a>
           </div>
-          @endforeach
-          {{ $posts->links() }}
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="#">
+              <span class="caption">
+                <span class="caption-content">
+                  <h2>Ice Cream</h2>
+                  <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
+                </span>
+              </span>
+              <img class="img-fluid" src="images/portfolio-2.jpg" alt="">
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="#">
+              <span class="caption">
+                <span class="caption-content">
+                  <h2>Strawberries</h2>
+                  <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
+                </span>
+              </span>
+              <img class="img-fluid" src="images/portfolio-3.jpg" alt="">
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="#">
+              <span class="caption">
+                <span class="caption-content">
+                  <h2>Workspace</h2>
+                  <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
+                </span>
+              </span>
+              <img class="img-fluid" src="images/portfolio-4.jpg" alt="">
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -179,10 +209,12 @@
     <!-- Call to Action -->
     <section class="content-section bg-primary text-white">
       <div class="container text-center">
-          <a href="{{ $posts->nextPageUrl() }}" class="btn btn-xl btn-light mr-4">上一页</a>
-          <a href="#" class="btn btn-xl btn-light mr-4">下一页</a>
+        <h2 class="mb-4">The buttons below are impossible to resist...</h2>
+        <a href="#" class="btn btn-xl btn-light mr-4">Click Me!</a>
+        <a href="#" class="btn btn-xl btn-dark">Look at Me!</a>
       </div>
     </section>
+
 
 
 
@@ -225,43 +257,7 @@
     <!-- Custom scripts for this template -->
     <script src="/js/stylish-portfolio.min.js"></script>
 
-     <!--异步加载点赞-->
-            <script type="text/javascript">
-                function nextPage(id){
-                    $.ajax({
-                        type: 'GET',
-                        url: '?/page=2',
-                        data: { id : id },
-                        dataType: 'json',
-                        headers: {
-                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                        },
-                        success: function(data){
-                          
-                            if(data.status == 0){
-                                $("#msg-success").text("点赞成功");
-                                $("#msg-success").css("display", "");
-                                $('#msg-success').delay(1000).slideUp(300);
-                                $('#thumb-featured').text(data.featured);
-                            }else if(data.status==1){
-                                $("#msg-warning").text("已经点过赞啦");
-                                $("#msg-warning").css("display", "");
-                                $('#msg-warning').delay(1000).slideUp(300);
-                            }else{
-                                $("#msg-wrong").text("服务器错误，请联系管理员");
-                                $("#msg-wrong").css("display", "");
-                                $('#msg-wrong').delay(1000).slideUp(300);
-                            }
-                        },
-                        error: function(xhr, type){
-                        alert("Oops, Ajax errpr.");
-                        }
-                        
-                    });
-                };
-                
-            </script>
-
+     
   </body>
 
 </html>
