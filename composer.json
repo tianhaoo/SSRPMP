@@ -12,7 +12,7 @@
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "mews/captcha": "^2.2",
+        "mews/captcha": "dev-master",
         "tcg/voyager": "^1.1"
     },
     "require-dev": {
@@ -63,5 +63,6 @@
             "type": "composer",
             "url": "https://larapack.io"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
