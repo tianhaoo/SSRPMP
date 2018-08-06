@@ -11,7 +11,7 @@
  Target Server Version : 50722
  File Encoding         : 65001
 
- Date: 05/08/2018 17:08:27
+ Date: 06/08/2018 15:27:12
 */
 
 SET NAMES utf8mb4;
@@ -62,7 +62,7 @@ CREATE TABLE `data_rows`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `data_rows_data_type_id_foreign`(`data_type_id`) USING BTREE,
   CONSTRAINT `data_rows_data_type_id_foreign` FOREIGN KEY (`data_type_id`) REFERENCES `data_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of data_rows
@@ -123,6 +123,46 @@ INSERT INTO `data_rows` VALUES (53, 6, 'status', 'select_dropdown', 'Status', 1,
 INSERT INTO `data_rows` VALUES (54, 6, 'created_at', 'timestamp', 'Created At', 1, 1, 1, 0, 0, 0, '', 10);
 INSERT INTO `data_rows` VALUES (55, 6, 'updated_at', 'timestamp', 'Updated At', 1, 0, 0, 0, 0, 0, '', 11);
 INSERT INTO `data_rows` VALUES (56, 6, 'image', 'image', 'Page Image', 0, 1, 1, 1, 1, 1, '', 12);
+INSERT INTO `data_rows` VALUES (57, 7, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1);
+INSERT INTO `data_rows` VALUES (58, 7, 'user_id', 'text', 'User Id', 0, 0, 0, 0, 0, 0, NULL, 2);
+INSERT INTO `data_rows` VALUES (59, 7, 'project_id', 'text', 'Project Id', 0, 0, 0, 0, 0, 0, NULL, 3);
+INSERT INTO `data_rows` VALUES (60, 7, 'fno', 'text', 'Fno', 0, 1, 1, 1, 1, 1, NULL, 5);
+INSERT INTO `data_rows` VALUES (61, 7, 'apply_reason', 'text_area', 'Apply Reason', 0, 1, 1, 1, 1, 1, NULL, 6);
+INSERT INTO `data_rows` VALUES (62, 7, 'apply_money', 'text', 'Apply Money', 0, 1, 1, 1, 1, 1, NULL, 7);
+INSERT INTO `data_rows` VALUES (63, 7, 'status', 'text', 'Status', 0, 1, 1, 1, 1, 1, NULL, 8);
+INSERT INTO `data_rows` VALUES (64, 7, 'approve_id', 'text', 'Approve Id', 0, 0, 0, 0, 0, 0, NULL, 4);
+INSERT INTO `data_rows` VALUES (65, 7, 'apprpve_time', 'timestamp', 'Apprpve Time', 0, 1, 1, 1, 1, 1, NULL, 9);
+INSERT INTO `data_rows` VALUES (66, 7, 'approve_reason', 'text_area', 'Approve Reason', 0, 1, 1, 1, 1, 1, NULL, 10);
+INSERT INTO `data_rows` VALUES (67, 7, 'approve_money', 'text', 'Approve Money', 0, 1, 1, 1, 1, 1, NULL, 11);
+INSERT INTO `data_rows` VALUES (68, 7, 'reimburse_time', 'timestamp', 'Reimburse Time', 0, 1, 1, 1, 1, 1, NULL, 12);
+INSERT INTO `data_rows` VALUES (69, 7, 'reimburse_no', 'text', 'Reimburse No', 0, 1, 1, 1, 1, 1, NULL, 13);
+INSERT INTO `data_rows` VALUES (70, 7, 'end_time', 'timestamp', 'End Time', 0, 1, 1, 1, 1, 1, NULL, 14);
+INSERT INTO `data_rows` VALUES (71, 7, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 15);
+INSERT INTO `data_rows` VALUES (72, 7, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 16);
+INSERT INTO `data_rows` VALUES (73, 7, 'fund_belongsto_user_relationship', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"user_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 17);
+INSERT INTO `data_rows` VALUES (75, 7, 'fund_belongsto_user_relationship_1', 'relationship', 'approve', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Fund\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"approve_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 19);
+INSERT INTO `data_rows` VALUES (76, 8, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1);
+INSERT INTO `data_rows` VALUES (77, 8, 'pid', 'text', 'Pid', 0, 1, 1, 1, 1, 1, NULL, 4);
+INSERT INTO `data_rows` VALUES (78, 8, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, NULL, 5);
+INSERT INTO `data_rows` VALUES (79, 8, 'type_id', 'text', 'Type Id', 0, 1, 1, 1, 1, 1, NULL, 2);
+INSERT INTO `data_rows` VALUES (80, 8, 'user_id', 'text', 'User Id', 0, 1, 1, 1, 1, 1, NULL, 3);
+INSERT INTO `data_rows` VALUES (81, 8, 'teacher', 'text', 'Teacher', 0, 1, 1, 1, 1, 1, NULL, 6);
+INSERT INTO `data_rows` VALUES (82, 8, 'reason', 'text_area', 'Reason', 0, 1, 1, 1, 1, 1, NULL, 7);
+INSERT INTO `data_rows` VALUES (83, 8, 'description', 'text_area', 'Description', 0, 1, 1, 1, 1, 1, NULL, 8);
+INSERT INTO `data_rows` VALUES (84, 8, 'expect', 'text_area', 'Expect', 0, 1, 1, 1, 1, 1, NULL, 9);
+INSERT INTO `data_rows` VALUES (85, 8, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 10);
+INSERT INTO `data_rows` VALUES (86, 8, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 11);
+INSERT INTO `data_rows` VALUES (87, 7, 'fund_belongsto_project_relationship', 'relationship', 'projects', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Project\",\"table\":\"projects\",\"type\":\"belongsTo\",\"column\":\"project_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 20);
+INSERT INTO `data_rows` VALUES (89, 8, 'project_belongsto_type_relationship', 'relationship', 'types', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Type\",\"table\":\"types\",\"type\":\"belongsTo\",\"column\":\"type_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 13);
+INSERT INTO `data_rows` VALUES (90, 8, 'project_belongsto_user_relationship', 'relationship', 'host', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"user_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 14);
+INSERT INTO `data_rows` VALUES (92, 8, 'project_belongstomany_user_relationship', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\User\",\"table\":\"users\",\"type\":\"belongsToMany\",\"column\":\"id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"user_projects\",\"pivot\":\"1\",\"taggable\":\"0\"}', 15);
+INSERT INTO `data_rows` VALUES (93, 9, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1);
+INSERT INTO `data_rows` VALUES (94, 9, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, NULL, 2);
+INSERT INTO `data_rows` VALUES (95, 9, 'description', 'text_area', 'Description', 0, 1, 1, 1, 1, 1, NULL, 3);
+INSERT INTO `data_rows` VALUES (96, 9, 'condition', 'text_area', 'Condition', 0, 1, 1, 1, 1, 1, NULL, 4);
+INSERT INTO `data_rows` VALUES (97, 9, 'budget', 'text', 'Budget', 0, 1, 1, 1, 1, 1, NULL, 5);
+INSERT INTO `data_rows` VALUES (98, 9, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 6);
+INSERT INTO `data_rows` VALUES (99, 9, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 7);
 
 -- ----------------------------
 -- Table structure for data_types
@@ -147,7 +187,7 @@ CREATE TABLE `data_types`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `data_types_name_unique`(`name`) USING BTREE,
   UNIQUE INDEX `data_types_slug_unique`(`slug`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of data_types
@@ -158,13 +198,16 @@ INSERT INTO `data_types` VALUES (3, 'roles', 'roles', 'Role', 'Roles', 'voyager-
 INSERT INTO `data_types` VALUES (4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, '', '', 1, 0, NULL, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
 INSERT INTO `data_types` VALUES (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', '', '', 1, 0, NULL, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
 INSERT INTO `data_types` VALUES (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
+INSERT INTO `data_types` VALUES (7, 'funds', 'funds', 'Fund', 'Funds', 'voyager-receipt', 'App\\Fund', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-08-05 09:35:41', '2018-08-05 09:38:34');
+INSERT INTO `data_types` VALUES (8, 'projects', 'projects', 'Project', 'Projects', NULL, 'App\\Project', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-08-06 14:02:10', '2018-08-06 14:02:10');
+INSERT INTO `data_types` VALUES (9, 'types', 'types', 'Type', 'Types', NULL, 'App\\Type', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-08-06 15:13:55', '2018-08-06 15:13:55');
 
 -- ----------------------------
 -- Table structure for funds
 -- ----------------------------
 DROP TABLE IF EXISTS `funds`;
 CREATE TABLE `funds`  (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `fno` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '自动生成的经费申请编号',
@@ -172,22 +215,22 @@ CREATE TABLE `funds`  (
   `apply_money` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '金额',
   `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '申请状态',
   `approve_id` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '审批人id',
-  `apprpve_time` timestamp(0) NULL DEFAULT NULL COMMENT '审批时间',
+  `apprpve_time` datetime(0) NULL DEFAULT NULL COMMENT '审批时间',
   `approve_reason` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '审批理由',
   `approve_money` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '结报金额',
-  `reimburse_time` timestamp(0) NULL DEFAULT NULL COMMENT '报销时间',
+  `reimburse_time` datetime(0) NULL DEFAULT NULL COMMENT '报销时间',
   `reimburse_no` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '报销单编号',
-  `end_time` timestamp(0) NULL DEFAULT NULL COMMENT '结束时间',
+  `end_time` datetime(0) NULL DEFAULT NULL COMMENT '结束时间',
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_id_funds_users`(`user_id`) USING BTREE,
-  INDEX `project_id_funds_projects`(`project_id`) USING BTREE,
-  INDEX `approve_id_funds_users`(`approve_id`) USING BTREE,
-  CONSTRAINT `project_id_funds_projects` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `user_id_funds_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `approve_id_funds_users` FOREIGN KEY (`approve_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+  INDEX `funds_users_user_id`(`user_id`) USING BTREE,
+  INDEX `projects_users_project_id`(`project_id`) USING BTREE,
+  INDEX `funds_users_approve_id`(`approve_id`) USING BTREE,
+  CONSTRAINT `funds_users_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `projects_users_project_id` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `funds_users_approve_id` FOREIGN KEY (`approve_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for menu_items
@@ -210,25 +253,28 @@ CREATE TABLE `menu_items`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `menu_items_menu_id_foreign`(`menu_id`) USING BTREE,
   CONSTRAINT `menu_items_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of menu_items
 -- ----------------------------
 INSERT INTO `menu_items` VALUES (1, 1, 'Dashboard', '', '_self', 'voyager-boat', NULL, NULL, 1, '2018-08-04 13:39:58', '2018-08-04 13:39:58', 'voyager.dashboard', NULL);
-INSERT INTO `menu_items` VALUES (2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 5, '2018-08-04 13:39:58', '2018-08-04 13:39:58', 'voyager.media.index', NULL);
+INSERT INTO `menu_items` VALUES (2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 4, '2018-08-04 13:39:58', '2018-08-06 15:14:55', 'voyager.media.index', NULL);
 INSERT INTO `menu_items` VALUES (3, 1, 'Users', '', '_self', 'voyager-person', NULL, NULL, 3, '2018-08-04 13:39:58', '2018-08-04 13:39:58', 'voyager.users.index', NULL);
 INSERT INTO `menu_items` VALUES (4, 1, 'Roles', '', '_self', 'voyager-lock', NULL, NULL, 2, '2018-08-04 13:39:58', '2018-08-04 13:39:58', 'voyager.roles.index', NULL);
-INSERT INTO `menu_items` VALUES (5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 9, '2018-08-04 13:39:58', '2018-08-04 13:39:58', NULL, NULL);
-INSERT INTO `menu_items` VALUES (6, 1, 'Menu Builder', '', '_self', 'voyager-list', NULL, 5, 10, '2018-08-04 13:39:58', '2018-08-04 13:39:58', 'voyager.menus.index', NULL);
-INSERT INTO `menu_items` VALUES (7, 1, 'Database', '', '_self', 'voyager-data', NULL, 5, 11, '2018-08-04 13:39:58', '2018-08-04 13:39:58', 'voyager.database.index', NULL);
-INSERT INTO `menu_items` VALUES (8, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 5, 12, '2018-08-04 13:39:58', '2018-08-04 13:39:58', 'voyager.compass.index', NULL);
-INSERT INTO `menu_items` VALUES (9, 1, 'BREAD', '', '_self', 'voyager-bread', NULL, 5, 13, '2018-08-04 13:39:58', '2018-08-04 13:39:58', 'voyager.bread.index', NULL);
-INSERT INTO `menu_items` VALUES (10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 14, '2018-08-04 13:39:58', '2018-08-04 13:39:58', 'voyager.settings.index', NULL);
-INSERT INTO `menu_items` VALUES (11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 8, '2018-08-04 13:39:59', '2018-08-04 13:39:59', 'voyager.categories.index', NULL);
-INSERT INTO `menu_items` VALUES (12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 6, '2018-08-04 13:39:59', '2018-08-04 13:39:59', 'voyager.posts.index', NULL);
-INSERT INTO `menu_items` VALUES (13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 7, '2018-08-04 13:39:59', '2018-08-04 13:39:59', 'voyager.pages.index', NULL);
-INSERT INTO `menu_items` VALUES (14, 1, 'Hooks', '', '_self', 'voyager-hook', NULL, 5, 13, '2018-08-04 13:39:59', '2018-08-04 13:39:59', 'voyager.hooks', NULL);
+INSERT INTO `menu_items` VALUES (5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 8, '2018-08-04 13:39:58', '2018-08-06 15:14:55', NULL, NULL);
+INSERT INTO `menu_items` VALUES (6, 1, 'Menu Builder', '', '_self', 'voyager-list', NULL, 5, 1, '2018-08-04 13:39:58', '2018-08-06 15:14:55', 'voyager.menus.index', NULL);
+INSERT INTO `menu_items` VALUES (7, 1, 'Database', '', '_self', 'voyager-data', NULL, 5, 2, '2018-08-04 13:39:58', '2018-08-06 15:14:55', 'voyager.database.index', NULL);
+INSERT INTO `menu_items` VALUES (8, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 5, 3, '2018-08-04 13:39:58', '2018-08-06 15:14:55', 'voyager.compass.index', NULL);
+INSERT INTO `menu_items` VALUES (9, 1, 'BREAD', '', '_self', 'voyager-bread', NULL, 5, 4, '2018-08-04 13:39:58', '2018-08-06 15:14:55', 'voyager.bread.index', NULL);
+INSERT INTO `menu_items` VALUES (10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 9, '2018-08-04 13:39:58', '2018-08-06 15:14:55', 'voyager.settings.index', NULL);
+INSERT INTO `menu_items` VALUES (11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 7, '2018-08-04 13:39:59', '2018-08-06 15:14:55', 'voyager.categories.index', NULL);
+INSERT INTO `menu_items` VALUES (12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 5, '2018-08-04 13:39:59', '2018-08-06 15:14:55', 'voyager.posts.index', NULL);
+INSERT INTO `menu_items` VALUES (13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 6, '2018-08-04 13:39:59', '2018-08-06 15:14:55', 'voyager.pages.index', NULL);
+INSERT INTO `menu_items` VALUES (14, 1, 'Hooks', '', '_self', 'voyager-hook', NULL, 5, 5, '2018-08-04 13:39:59', '2018-08-06 15:14:55', 'voyager.hooks', NULL);
+INSERT INTO `menu_items` VALUES (15, 1, 'Funds', '', '_self', 'voyager-diamond', '#000000', NULL, 12, '2018-08-05 09:35:41', '2018-08-06 15:20:41', 'voyager.funds.index', 'null');
+INSERT INTO `menu_items` VALUES (16, 1, 'Projects', '', '_self', 'voyager-paw', '#000000', NULL, 10, '2018-08-06 14:02:10', '2018-08-06 15:21:41', 'voyager.projects.index', 'null');
+INSERT INTO `menu_items` VALUES (17, 1, 'Types', '', '_self', 'voyager-archive', '#000000', NULL, 11, '2018-08-06 15:13:55', '2018-08-06 15:18:27', 'voyager.types.index', 'null');
 
 -- ----------------------------
 -- Table structure for menus
@@ -383,6 +429,21 @@ INSERT INTO `permission_role` VALUES (37, 1);
 INSERT INTO `permission_role` VALUES (38, 1);
 INSERT INTO `permission_role` VALUES (39, 1);
 INSERT INTO `permission_role` VALUES (40, 1);
+INSERT INTO `permission_role` VALUES (42, 1);
+INSERT INTO `permission_role` VALUES (43, 1);
+INSERT INTO `permission_role` VALUES (44, 1);
+INSERT INTO `permission_role` VALUES (45, 1);
+INSERT INTO `permission_role` VALUES (46, 1);
+INSERT INTO `permission_role` VALUES (47, 1);
+INSERT INTO `permission_role` VALUES (48, 1);
+INSERT INTO `permission_role` VALUES (49, 1);
+INSERT INTO `permission_role` VALUES (50, 1);
+INSERT INTO `permission_role` VALUES (51, 1);
+INSERT INTO `permission_role` VALUES (52, 1);
+INSERT INTO `permission_role` VALUES (53, 1);
+INSERT INTO `permission_role` VALUES (54, 1);
+INSERT INTO `permission_role` VALUES (55, 1);
+INSERT INTO `permission_role` VALUES (56, 1);
 
 -- ----------------------------
 -- Table structure for permissions
@@ -396,7 +457,7 @@ CREATE TABLE `permissions`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `permissions_key_index`(`key`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of permissions
@@ -442,6 +503,21 @@ INSERT INTO `permissions` VALUES (38, 'edit_pages', 'pages', '2018-08-04 13:39:5
 INSERT INTO `permissions` VALUES (39, 'add_pages', 'pages', '2018-08-04 13:39:59', '2018-08-04 13:39:59');
 INSERT INTO `permissions` VALUES (40, 'delete_pages', 'pages', '2018-08-04 13:39:59', '2018-08-04 13:39:59');
 INSERT INTO `permissions` VALUES (41, 'browse_hooks', NULL, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
+INSERT INTO `permissions` VALUES (42, 'browse_funds', 'funds', '2018-08-05 09:35:41', '2018-08-05 09:35:41');
+INSERT INTO `permissions` VALUES (43, 'read_funds', 'funds', '2018-08-05 09:35:41', '2018-08-05 09:35:41');
+INSERT INTO `permissions` VALUES (44, 'edit_funds', 'funds', '2018-08-05 09:35:41', '2018-08-05 09:35:41');
+INSERT INTO `permissions` VALUES (45, 'add_funds', 'funds', '2018-08-05 09:35:41', '2018-08-05 09:35:41');
+INSERT INTO `permissions` VALUES (46, 'delete_funds', 'funds', '2018-08-05 09:35:41', '2018-08-05 09:35:41');
+INSERT INTO `permissions` VALUES (47, 'browse_projects', 'projects', '2018-08-06 14:02:10', '2018-08-06 14:02:10');
+INSERT INTO `permissions` VALUES (48, 'read_projects', 'projects', '2018-08-06 14:02:10', '2018-08-06 14:02:10');
+INSERT INTO `permissions` VALUES (49, 'edit_projects', 'projects', '2018-08-06 14:02:10', '2018-08-06 14:02:10');
+INSERT INTO `permissions` VALUES (50, 'add_projects', 'projects', '2018-08-06 14:02:10', '2018-08-06 14:02:10');
+INSERT INTO `permissions` VALUES (51, 'delete_projects', 'projects', '2018-08-06 14:02:10', '2018-08-06 14:02:10');
+INSERT INTO `permissions` VALUES (52, 'browse_types', 'types', '2018-08-06 15:13:55', '2018-08-06 15:13:55');
+INSERT INTO `permissions` VALUES (53, 'read_types', 'types', '2018-08-06 15:13:55', '2018-08-06 15:13:55');
+INSERT INTO `permissions` VALUES (54, 'edit_types', 'types', '2018-08-06 15:13:55', '2018-08-06 15:13:55');
+INSERT INTO `permissions` VALUES (55, 'add_types', 'types', '2018-08-06 15:13:55', '2018-08-06 15:13:55');
+INSERT INTO `permissions` VALUES (56, 'delete_types', 'types', '2018-08-06 15:13:55', '2018-08-06 15:13:55');
 
 -- ----------------------------
 -- Table structure for posts
@@ -481,7 +557,7 @@ INSERT INTO `posts` VALUES (5, 2, 1, 'test', NULL, 'lllll;dfssssssl', '<p>asdfds
 -- ----------------------------
 DROP TABLE IF EXISTS `projects`;
 CREATE TABLE `projects`  (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `pid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '项目编号',
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '项目名称',
   `type_id` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '项目类型的id（是类型表的外键）',
@@ -493,11 +569,16 @@ CREATE TABLE `projects`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `host`(`user_id`) USING BTREE,
-  INDEX `type_id`(`type_id`) USING BTREE,
-  CONSTRAINT `host` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `type_id` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+  INDEX `type_id_projects_type`(`type_id`) USING BTREE,
+  INDEX `user_id_project`(`user_id`) USING BTREE,
+  CONSTRAINT `type_id_projects_type` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `user_id_project` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of projects
+-- ----------------------------
+INSERT INTO `projects` VALUES (2, 'adgfas', '啊手动阀手动阀', 1, 2, '阿迪斯发倒萨倒萨', '爱的色放', '阿斯蒂芬案说法', '啊手动阀为发', '2018-08-06 15:26:40', '2018-08-06 15:26:40');
 
 -- ----------------------------
 -- Table structure for roles
@@ -606,7 +687,7 @@ INSERT INTO `translations` VALUES (30, 'menu_items', 'title', 10, 'pt', 'Configu
 -- ----------------------------
 DROP TABLE IF EXISTS `types`;
 CREATE TABLE `types`  (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '类型名称',
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '类型简介',
   `condition` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '申报条件',
@@ -614,7 +695,12 @@ CREATE TABLE `types`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of types
+-- ----------------------------
+INSERT INTO `types` VALUES (1, '类型一', '阿斯顿发大水', '按上级领导覅骄傲送抵放假哦', '12k', '2018-08-06 15:25:11', '2018-08-06 15:25:11');
 
 -- ----------------------------
 -- Table structure for user_projects
@@ -625,10 +711,16 @@ CREATE TABLE `user_projects`  (
   `project_id` int(10) UNSIGNED NOT NULL,
   `whether_host` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '是否是主持人',
   PRIMARY KEY (`user_id`, `project_id`) USING BTREE,
-  INDEX `project_id`(`project_id`) USING BTREE,
-  CONSTRAINT `project_id` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
-  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
+  INDEX `mtm_user_projects_project_id`(`project_id`) USING BTREE,
+  CONSTRAINT `mtm_user_projects_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `mtm_user_projects_project_id` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user_projects
+-- ----------------------------
+INSERT INTO `user_projects` VALUES (1, 2, NULL);
+INSERT INTO `user_projects` VALUES (2, 2, NULL);
 
 -- ----------------------------
 -- Table structure for user_roles
@@ -670,6 +762,6 @@ CREATE TABLE `users`  (
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 1, 'Admin', 'admin@admin.com', 'users/default.png', '$2y$10$W7qLbaAJAh9lrS/FQJRJpuWAdSnhwt.qrLE1mTDolIUiVMn4v.GSm', 'pmH9djxnU5YtjpDx5xAVBtaLABv3lSwduDmRAbKxxklCRpa8CPKUVRLbZMtG', NULL, NULL, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
-INSERT INTO `users` VALUES (2, 1, 'tian', '360726539@qq.com', 'users/default.png', '$2y$10$1fd4W8kKypvo7u16lLEjLua.RQ.aZtAQm7MTdtOOscnNTjfZ7nOcq', 'S8gQ6X5w86cqdXNAqc6gOiDv28pMhm6VMjPMW5xiAMuhGQDH8pUMtraCwHmy', '{\"locale\":\"en\"}', NULL, '2018-08-04 14:18:31', '2018-08-04 14:19:15');
+INSERT INTO `users` VALUES (2, 1, 'tian', '360726539@qq.com', 'users/default.png', '$2y$10$1fd4W8kKypvo7u16lLEjLua.RQ.aZtAQm7MTdtOOscnNTjfZ7nOcq', 'S8gQ6X5w86cqdXNAqc6gOiDv28pMhm6VMjPMW5xiAMuhGQDH8pUMtraCwHmy', '{\"locale\":\"zh_CN\"}', NULL, '2018-08-04 14:18:31', '2018-08-06 13:24:52');
 
 SET FOREIGN_KEY_CHECKS = 1;
