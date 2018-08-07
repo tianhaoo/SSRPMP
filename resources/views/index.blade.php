@@ -209,9 +209,9 @@
     <!-- Call to Action -->
     <section class="content-section bg-primary text-white">
       <div class="container text-center">
-        <h2 class="mb-4">The buttons below are impossible to resist...</h2>
-        <a href="#" class="btn btn-xl btn-light mr-4">Click Me!</a>
-        <a href="#" class="btn btn-xl btn-dark">Look at Me!</a>
+        <h2 class="mb-4">更多功能...</h2>
+        <a href="#" class="btn btn-xl btn-light mr-4">管理项目</a>
+        <a href="#" class="btn btn-xl btn-dark">管理经费申请</a>
       </div>
     </section>
 
@@ -238,7 +238,7 @@
             </a>
           </li>
         </ul>
-        <p class="text-muted small mb-0">Copyright &copy; Your Website 2018</p>
+        <p class="text-muted small mb-0">Copyright &copy; Tianhaoo  </p>
       </div>
     </footer>
 

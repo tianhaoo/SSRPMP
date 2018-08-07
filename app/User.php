@@ -26,4 +26,29 @@ class User extends \TCG\Voyager\Models\User
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // 作为成员参与的项目，也有可能是主持人
+    public function member_projects()
+    {
+        return $this->belongsToMany('App\Project', 'user_projects', 'user_id', 'project_id');
+    }
+
+    // 作为主持人的项目
+    public function host_projects()
+    {
+        return $this->hasMany('App\Project', 'user_id', 'id');
+    }
+
+    // 申请的资金
+    public function apply_funds()
+    {
+        return $this->belongsTo('App\Fund', 'user_id', 'id');
+    }
+
+    // 审批的资金
+    public function approve_funds()
+    {
+        return $this->belongsTo('App\Fund', 'approve_id', 'id');
+    }
+
 }
