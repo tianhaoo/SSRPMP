@@ -13,8 +13,9 @@ use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
 use TCG\Voyager\Http\Controllers\Controller;
 use PHPUnit\Framework\Constraint\IsTrue;
+use App\Fund;
 
-class ProjectController extends Controller
+class FundController extends Controller
 {
     use BreadRelationshipParser;
     //***************************************
@@ -100,14 +101,14 @@ class ProjectController extends Controller
         // 拥有browse_media权限的用户可以查看所有的项目
         // 没有browse_media权限的用户只能查看自己参与的项目
         // 找出当前用户参与的项目，并替换
-        $canSeeOthersProjects = Voyager::can('browse_media');
-        if(!$canSeeOthersProjects)
+        $canSeeOthersFunds = Voyager::can('browse_media');
+        if(!$canSeeOthersFunds)
         {
-            $member_projects = $request->user()->member_projects;
-            $dataTypeContent = $member_projects;
+            $apply_funds = $request->user()->apply_funds;
+            $dataTypeContent = $apply_funds;
         }
         // 如果拥有相应的权限的话，就不进行任何操作
-        
+
         return Voyager::view($view, compact(
             'dataType',
             'dataTypeContent',
@@ -158,16 +159,16 @@ class ProjectController extends Controller
         $this->authorize('read', $dataTypeContent);
 
         // 没有权限的人不是自己参与的项目不能看
-        $canSeeOthersProjects = Voyager::can('browse_media');
-        if(! $canSeeOthersProjects)
+        $canSeeOthersFunds = Voyager::can('browse_media');
+        if(! $canSeeOthersFunds)
         {
             // 先找出能看的项目
-            $member_projects = $request->user()->member_projects;
+            $apply_funds = $request->user()->apply_funds;
             $cannotSee = true;
             // 请求的不在能看的里面，那就不让看
-            foreach($member_projects as $project)
+            foreach($apply_funds as $fund)
             {
-                if($project->id == $id)
+                if($fund->id == $id)
                     $cannotSee = false;
             }
             if($cannotSee)
@@ -182,7 +183,7 @@ class ProjectController extends Controller
         if (view()->exists("voyager::$slug.read")) {
             $view = "voyager::$slug.read";
         }
-
+        
         return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
         
     }
@@ -202,16 +203,16 @@ class ProjectController extends Controller
     public function edit(Request $request, $id)
     {
         // 没有权限的人不是自己参与的项目不能编辑
-        $canEditOthersProjects = Voyager::can('browse_media');
-        if(! $canEditOthersProjects)
+        $canEditOthersFunds = Voyager::can('browse_media');
+        if(! $canEditOthersFunds)
         {
             // 先找出能编辑的项目
-            $member_projects = $request->user()->member_projects;
+            $apply_funds = $request->user()->apply_funds;
             $cannotEdit = true;
             // 请求的不在能编辑的里面，那就不让编辑
-            foreach($member_projects as $project)
+            foreach($apply_funds as $fund)
             {
-                if($project->id == $id)
+                if($fund->id == $id)
                     $cannotEdit = false;
             }
             if($cannotEdit)
@@ -249,23 +250,178 @@ class ProjectController extends Controller
             $view = "voyager::$slug.edit-add";
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
+        // 处理申请流程中编辑表单的一些变化
+        $editFund = Fund::find($id);
+        $isTeacher = Voyager::can('browse_media');
+        if($editFund->status == "申请中"){
+            // 即将开始审批阶段
+            // 当前状态是申请中，学生可以编辑申请理由，申请金额，申请项目，老师则可以读取申请理由，申请金额和申请项目，并编辑审批理由和审批金额
+            if(! $isTeacher){
+                $newEditRows = array();
+                foreach($dataType->EditRows as $row){
+                    if ($row->field == "apply_reason" || $row->field == "apply_money" || $row->field == "fund_belongsto_project_relationship")
+                        array_push($newEditRows, $row);
+                }
+                $dataType->editRows = collect($newEditRows);
+            } elseif($isTeacher) {
+                $newEditRows = array();
+                $readonly = array(
+                    "textarea" => array("apply_reason",),
+                    "input" => array("apply_money"), 
+                );
+                $disabled = array(
+                    "project_id",
+                );
+                foreach($dataType->EditRows as $row){
+                    if ($row->field == "apply_reason" 
+                    || $row->field == "apply_money" 
+                    || $row->field == "fund_belongsto_project_relationship"
+                    || $row->field == "approve_reason"
+                    || $row->field == "approve_money"
+                    )
+                        array_push($newEditRows, $row);
+                }
+                $dataType->editRows = collect($newEditRows);               
+            } else{
+                return redirect()
+                ->back()
+                ->with([
+                    'message' => "获取当前用户信息失败，请稍后再试，或联系管理员",
+                    "alert-type" => 'error',
+                ]);
+            }
+
+        } elseif($editFund->status == "审批中"){
+            // 即将开始结报阶段
+            // 当前状态是审批中，老师可以编辑审批理由和审批金额，学生可以查看申请理由，申请金额，申请项目，审批理由和审批金额，并编辑报销单编号和结报金额
+            if($isTeacher){
+                $newEditRows = array();
+                $readonly = array(
+                    "textarea" => array("apply_reason",),
+                    "input" => array("apply_money"), 
+                );
+                $disabled = array(
+                    "project_id",
+                );
+                foreach($dataType->EditRows as $row){
+                    if ($row->field == "apply_reason" 
+                    || $row->field == "apply_money" 
+                    || $row->field == "fund_belongsto_project_relationship"
+                    || $row->field == "approve_reason"
+                    || $row->field == "approve_money"
+                    )
+                        array_push($newEditRows, $row);
+                }
+                $dataType->editRows = collect($newEditRows);
+            } elseif(! $isTeacher){
+                $newEditRows = array();
+                $readonly = array(
+                    "textarea" => array("apply_reason", "approve_reason"),
+                    "input" => array("apply_money", "approve_money"), 
+                );
+                $disabled = array(
+                    "project_id",
+                );
+                foreach($dataType->EditRows as $row){
+                    if ($row->field == "apply_reason" 
+                    || $row->field == "apply_money" 
+                    || $row->field == "fund_belongsto_project_relationship"
+                    || $row->field == "approve_reason"
+                    || $row->field == "approve_money"
+                    || $row->field == "reimburse_no"
+                    || $row->field == "reimburse_money"
+                    )
+                        array_push($newEditRows, $row);
+                }
+                $dataType->editRows = collect($newEditRows);
+            } else {
+                return redirect()
+                ->back()
+                ->with([
+                    'message' => "获取当前用户信息失败，请稍后再试，或联系管理员",
+                    "alert-type" => 'error',
+                ]);
+            }
+        } elseif($editFund->status == "结报中"){
+            if(!$isTeacher){
+                $newEditRows = array();
+                $readonly = array(
+                    "textarea" => array("apply_reason", "approve_reason"),
+                    "input" => array("apply_money", "approve_money"), 
+                );
+                $disabled = array(
+                    "project_id",
+                );
+                foreach($dataType->EditRows as $row){
+                    if ($row->field == "apply_reason" 
+                    || $row->field == "apply_money" 
+                    || $row->field == "fund_belongsto_project_relationship"
+                    || $row->field == "approve_reason"
+                    || $row->field == "approve_money"
+                    || $row->field == "reimburse_no"
+                    || $row->field == "reimburse_money"
+                    )
+                        array_push($newEditRows, $row);
+                }
+                $dataType->editRows = collect($newEditRows);
+            } elseif($isTeacher){
+                $newEditRows = array();
+                $readonly = array(
+                    "textarea" => array("apply_reason", "approve_reason", ),
+                    "input" => array("reimburse_no"), 
+                );
+                $disabled = array(
+                    "project_id",
+                );
+                foreach($dataType->EditRows as $row){
+                    if ($row->field == "apply_reason" 
+                    || $row->field == "apply_money" 
+                    || $row->field == "fund_belongsto_project_relationship"
+                    || $row->field == "approve_reason"
+                    || $row->field == "approve_money"
+                    || $row->field == "reimburse_no"
+                    || $row->field == "reimburse_money"
+                    )
+                        array_push($newEditRows, $row);
+                }
+                $dataType->editRows = collect($newEditRows);
+            } else {
+                return redirect()
+                ->back()
+                ->with([
+                    'message' => "获取当前用户信息失败，请稍后再试，或联系管理员",
+                    "alert-type" => 'error',
+                ]);
+            }
+        } else {
+            return redirect()
+            ->back()
+            ->with([
+                'message' => "获取当前经费申请信息失败，请稍后再试，或联系管理员",
+                "alert-type" => 'error',
+            ]);
+        }
+
+
+        if(!isset($readonly)) $readonly = array();
+        if(!isset($disabled)) $disabled = array();
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'readonly', 'disabled'));
     }
 
     // POST BR(E)AD
     public function update(Request $request, $id)
     {
         // 没有权限的人不是自己参与的项目不能编辑
-        $canUpdateOthersProjects = Voyager::can('browse_media');
-        if(! $canUpdateOthersProjects)
+        $canUpdateOthersFunds = Voyager::can('browse_media');
+        if(! $canUpdateOthersFunds)
         {
             // 先找出能编辑的项目
-            $member_projects = $request->user()->member_projects;
+            $apply_funds = $request->user()->apply_funds;
             $cannotUpdate = true;
             // 请求的不在能编辑的里面，那就不让编辑
-            foreach($member_projects as $project)
+            foreach($apply_funds as $fund)
             {
-                if($project->id == $id)
+                if($fund->id == $id)
                     $cannotUpdate = false;
             }
             if($cannotUpdate)
@@ -281,11 +437,18 @@ class ProjectController extends Controller
 
         $data = call_user_func([$dataType->model_name, 'findOrFail'], $id);
 
+        
         // Check permission
         $this->authorize('edit', $data);
 
+        // // 不同的人不同的阶段有不同的权限
+        // $editFund = Fund::find($id);
+        // $isTeacher = Voyager::can('browse_media');
+
+
         // Validate fields with ajax
         $val = $this->validateBread($request->all(), $dataType->editRows, $dataType->name, $id);
+
 
         if ($val->fails()) {
             return response()->json(['errors' => $val->messages()]);
@@ -293,7 +456,7 @@ class ProjectController extends Controller
 
         if (!$request->ajax()) {
             $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
-
+            
             event(new BreadDataUpdated($dataType, $data));
 
             return redirect()
@@ -348,6 +511,15 @@ class ProjectController extends Controller
             $view = "voyager::$slug.edit-add";
         }
 
+        // 创建新的经费管理的时候，只能添加申请理由，申请经费和对应的项目
+        $newAddRows = array();
+        foreach($dataType->addRows as $row){
+            if ($row->field == "apply_reason" || $row->field == "apply_money" || $row->field == "fund_belongsto_project_relationship")
+                array_push($newAddRows, $row);
+        }
+        $dataType->addRows = collect($newAddRows); 
+
+
         return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
     }
 
@@ -376,12 +548,30 @@ class ProjectController extends Controller
 
         if (!$request->has('_validate')) {
             $data = $this->insertUpdateData($request, $slug, $dataType->addRows, new $dataType->model_name());
+            
 
             event(new BreadDataAdded($dataType, $data));
 
+            // 根据创建时间自动生成流水号，并在创建的时候将状态设置为申请
+            $fund = Fund::find($data->id);
+            $fund->fno = str_replace("-","",date("Y-m-dH-i-s"));
+            $fund->status = "申请中";
+            $fund->user_id = $request->user()->id;
+            if(!$fund->save()){
+                return redirect()
+                ->back()
+                ->with([
+                    'message' => "创建流水号和写入申请状态失败，请稍后再试，或联系管理员",
+                    "alert-type" => 'error',
+                ]);
+            };
+
+
+            // 
             if ($request->ajax()) {
-                return response()->json(['success' => true, 'data' => $data]);
+                return response()->json(['success' => true, 'data' => $data]);  
             }
+
 
             return redirect()
                 ->route("voyager.{$dataType->slug}.index")
@@ -407,16 +597,16 @@ class ProjectController extends Controller
     public function destroy(Request $request, $id)
     {
         // 没有权限的人不是自己参与的项目不能删除
-        $canDeleteOthersProjects = Voyager::can('browse_media');
-        if(! $canDeleteOthersProjects)
+        $canDeleteOthersFunds = Voyager::can('browse_media');
+        if(! $canDeleteOthersFunds)
         {
             // 先找出能删除的项目
-            $member_projects = $request->user()->member_projects;
+            $apply_funds = $request->user()->apply_funds;
             $cannotDelete = true;
             // 请求的不在能删除的里面，那就不让删除
-            foreach($member_projects as $project)
+            foreach($apply_funds as $fund)
             {
-                if($project->id == $id)
+                if($fund->id == $id)
                     $cannotDelete = false;
             }
             if($cannotDelete)

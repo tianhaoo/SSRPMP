@@ -11,7 +11,7 @@
  Target Server Version : 50722
  File Encoding         : 65001
 
- Date: 19/08/2018 20:33:19
+ Date: 07/08/2018 15:25:45
 */
 
 SET NAMES utf8mb4;
@@ -62,7 +62,7 @@ CREATE TABLE `data_rows`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `data_rows_data_type_id_foreign`(`data_type_id`) USING BTREE,
   CONSTRAINT `data_rows_data_type_id_foreign` FOREIGN KEY (`data_type_id`) REFERENCES `data_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 102 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 101 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of data_rows
@@ -124,23 +124,23 @@ INSERT INTO `data_rows` VALUES (54, 6, 'created_at', 'timestamp', 'Created At', 
 INSERT INTO `data_rows` VALUES (55, 6, 'updated_at', 'timestamp', 'Updated At', 1, 0, 0, 0, 0, 0, '', 11);
 INSERT INTO `data_rows` VALUES (56, 6, 'image', 'image', 'Page Image', 0, 1, 1, 1, 1, 1, '', 12);
 INSERT INTO `data_rows` VALUES (57, 7, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1);
-INSERT INTO `data_rows` VALUES (58, 7, 'user_id', 'text', 'User Id', 0, 1, 1, 1, 1, 1, NULL, 2);
-INSERT INTO `data_rows` VALUES (59, 7, 'project_id', 'text', 'Project Id', 0, 1, 1, 1, 1, 1, NULL, 3);
-INSERT INTO `data_rows` VALUES (60, 7, 'fno', 'text', '流水号', 0, 1, 1, 0, 0, 0, NULL, 5);
+INSERT INTO `data_rows` VALUES (58, 7, 'user_id', 'text', 'User Id', 0, 0, 0, 0, 0, 0, NULL, 2);
+INSERT INTO `data_rows` VALUES (59, 7, 'project_id', 'text', 'Project Id', 0, 0, 0, 0, 0, 0, NULL, 3);
+INSERT INTO `data_rows` VALUES (60, 7, 'fno', 'text', '流水号', 0, 1, 1, 1, 1, 1, NULL, 5);
 INSERT INTO `data_rows` VALUES (61, 7, 'apply_reason', 'text_area', '申请理由', 0, 1, 1, 1, 1, 1, NULL, 6);
 INSERT INTO `data_rows` VALUES (62, 7, 'apply_money', 'text', '申请金额', 0, 1, 1, 1, 1, 1, NULL, 7);
-INSERT INTO `data_rows` VALUES (63, 7, 'status', 'text', '申请单状态', 0, 1, 1, 0, 0, 0, NULL, 8);
-INSERT INTO `data_rows` VALUES (64, 7, 'approve_id', 'text', 'Approve Id', 0, 1, 1, 1, 1, 1, NULL, 4);
-INSERT INTO `data_rows` VALUES (65, 7, 'apprpve_time', 'timestamp', '审批时间', 0, 1, 1, 0, 0, 0, NULL, 9);
+INSERT INTO `data_rows` VALUES (63, 7, 'status', 'text', '申请单状态', 0, 1, 1, 1, 1, 1, NULL, 8);
+INSERT INTO `data_rows` VALUES (64, 7, 'approve_id', 'text', 'Approve Id', 0, 0, 0, 0, 0, 0, NULL, 4);
+INSERT INTO `data_rows` VALUES (65, 7, 'apprpve_time', 'timestamp', '审批时间', 0, 1, 1, 1, 1, 1, NULL, 9);
 INSERT INTO `data_rows` VALUES (66, 7, 'approve_reason', 'text_area', '审批理由', 0, 1, 1, 1, 1, 1, NULL, 10);
 INSERT INTO `data_rows` VALUES (67, 7, 'approve_money', 'text', '审批金额', 0, 1, 1, 1, 1, 1, NULL, 11);
-INSERT INTO `data_rows` VALUES (68, 7, 'reimburse_time', 'timestamp', '报销时间', 0, 1, 1, 0, 0, 0, NULL, 12);
+INSERT INTO `data_rows` VALUES (68, 7, 'reimburse_time', 'timestamp', '报销时间', 0, 1, 1, 1, 1, 1, NULL, 12);
 INSERT INTO `data_rows` VALUES (69, 7, 'reimburse_no', 'text', '报销单号', 0, 1, 1, 1, 1, 1, NULL, 13);
-INSERT INTO `data_rows` VALUES (70, 7, 'end_time', 'timestamp', '结束时间', 0, 1, 1, 0, 0, 0, NULL, 14);
-INSERT INTO `data_rows` VALUES (71, 7, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, NULL, 15);
+INSERT INTO `data_rows` VALUES (70, 7, 'end_time', 'timestamp', '结束时间', 0, 1, 1, 1, 1, 1, NULL, 14);
+INSERT INTO `data_rows` VALUES (71, 7, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 15);
 INSERT INTO `data_rows` VALUES (72, 7, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 16);
 INSERT INTO `data_rows` VALUES (73, 7, 'fund_belongsto_user_relationship', 'relationship', '申请人名称', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"user_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 17);
-INSERT INTO `data_rows` VALUES (75, 7, 'fund_belongsto_user_relationship_1', 'relationship', '审批人名称', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"approve_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 19);
+INSERT INTO `data_rows` VALUES (75, 7, 'fund_belongsto_user_relationship_1', 'relationship', '审批人名称', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Fund\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"approve_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 19);
 INSERT INTO `data_rows` VALUES (76, 8, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1);
 INSERT INTO `data_rows` VALUES (77, 8, 'pid', 'text', '项目编号', 0, 1, 1, 1, 1, 1, NULL, 4);
 INSERT INTO `data_rows` VALUES (78, 8, 'name', 'text', '项目名称', 0, 1, 1, 1, 1, 1, NULL, 5);
@@ -163,7 +163,6 @@ INSERT INTO `data_rows` VALUES (97, 9, 'budget', 'text', '预算', 0, 1, 1, 1, 1
 INSERT INTO `data_rows` VALUES (98, 9, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 6);
 INSERT INTO `data_rows` VALUES (99, 9, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 7);
 INSERT INTO `data_rows` VALUES (100, 7, 'fund_belongsto_project_relationship', 'relationship', '项目名称', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Project\",\"table\":\"projects\",\"type\":\"belongsTo\",\"column\":\"project_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 20);
-INSERT INTO `data_rows` VALUES (101, 7, 'reimburse_money', 'text', '结报金额', 0, 1, 1, 1, 1, 1, NULL, 14);
 
 -- ----------------------------
 -- Table structure for data_types
@@ -199,7 +198,7 @@ INSERT INTO `data_types` VALUES (3, 'roles', 'roles', 'Role', 'Roles', 'voyager-
 INSERT INTO `data_types` VALUES (4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, '', '', 1, 0, NULL, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
 INSERT INTO `data_types` VALUES (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', '', '', 1, 0, NULL, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
 INSERT INTO `data_types` VALUES (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
-INSERT INTO `data_types` VALUES (7, 'funds', 'funds', 'Fund', 'Funds', 'voyager-receipt', 'App\\Fund', NULL, '\\App\\Http\\Controllers\\Voyager\\FundController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-08-05 09:35:41', '2018-08-19 13:33:45');
+INSERT INTO `data_types` VALUES (7, 'funds', 'funds', 'Fund', 'Funds', 'voyager-receipt', 'App\\Fund', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-08-05 09:35:41', '2018-08-05 09:38:34');
 INSERT INTO `data_types` VALUES (8, 'projects', 'projects', '项目', '项目', 'voyager-paw', 'App\\Project', NULL, '\\App\\Http\\Controllers\\Voyager\\ProjectController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-08-06 14:02:10', '2018-08-06 20:12:05');
 INSERT INTO `data_types` VALUES (9, 'types', 'types', 'Type', 'Types', 'voyager-archive', 'App\\Type', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-08-06 15:13:55', '2018-08-06 20:09:48');
 
@@ -218,10 +217,9 @@ CREATE TABLE `funds`  (
   `approve_id` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '审批人id',
   `apprpve_time` datetime(0) NULL DEFAULT NULL COMMENT '审批时间',
   `approve_reason` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '审批理由',
-  `approve_money` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '审批金额',
+  `approve_money` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '结报金额',
   `reimburse_time` datetime(0) NULL DEFAULT NULL COMMENT '报销时间',
   `reimburse_no` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '报销单编号',
-  `reimburse_money` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '报销金额',
   `end_time` datetime(0) NULL DEFAULT NULL COMMENT '结束时间',
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
@@ -232,19 +230,7 @@ CREATE TABLE `funds`  (
   CONSTRAINT `funds_users_approve_id` FOREIGN KEY (`approve_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `funds_users_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `projects_users_project_id` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of funds
--- ----------------------------
-INSERT INTO `funds` VALUES (1, 2, 5, 'assfa', 'asfasf', 'asfasf', 'asdfa', 1, NULL, 'asfasd', 'adsfas', NULL, 'lasf;', NULL, NULL, '2018-08-19 13:30:00', '2018-08-19 13:33:18');
-INSERT INTO `funds` VALUES (2, 2, 2, '20180819133358', 'ij;aos', NULL, '申请', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-19 13:33:00', '2018-08-19 13:48:06');
-INSERT INTO `funds` VALUES (3, NULL, 2, '20180819135535', 'oijljoijoijoijio', '哦i就', '申请', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-19 13:55:35', '2018-08-19 13:55:35');
-INSERT INTO `funds` VALUES (4, 2, 2, '20180819140151', '申请理由', '申请金额', '申请', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-19 14:01:51', '2018-08-19 14:01:51');
-INSERT INTO `funds` VALUES (5, 2, 4, '20180819141716', '哦i啊睡觉哦覅', '哦i奇偶i就', '申请中', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-19 14:17:16', '2018-08-19 14:17:16');
-INSERT INTO `funds` VALUES (6, 4, 2, '20180819151241', 'osifjaosijjiooijfo', 'oijsoafi', '申请中', NULL, NULL, 'ask的饭卡', '哦i阿散井哦i啊接送覅就偶分', NULL, NULL, NULL, NULL, '2018-08-19 15:12:41', '2018-08-19 18:34:06');
-INSERT INTO `funds` VALUES (7, 2, 2, '20180819183627', '手动阀', '哦i击破阿三', '审批中', NULL, NULL, '上的覅欧吉安艘敌舰', '哦i奇偶加哦就', NULL, NULL, NULL, NULL, '2018-08-19 18:36:27', '2018-08-19 18:36:39');
-INSERT INTO `funds` VALUES (8, 4, 2, '20180819191836', '申请理由', '1000000', '结报中', NULL, NULL, '同意', '100000000000000', NULL, '报销单号', '7777', NULL, '2018-08-19 19:18:36', '2018-08-19 20:22:04');
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for menu_items
@@ -604,7 +590,7 @@ CREATE TABLE `projects`  (
   INDEX `user_id_project`(`user_id`) USING BTREE,
   CONSTRAINT `type_id_projects_type` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `user_id_project` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of projects
@@ -613,7 +599,6 @@ INSERT INTO `projects` VALUES (2, 'adgfas', '啊手动阀手动阀', 1, 2, '阿�
 INSERT INTO `projects` VALUES (3, 'adgfasgdsf', 'asdfasdf', 1, 4, 'asdfadsf', 'asdfasdf', 'asdfasdfadsf', 'adsfasdfasdfawe', '2018-08-06 18:11:00', '2018-08-06 22:31:55');
 INSERT INTO `projects` VALUES (4, 'sdafsdfasdf', 'asdfolakjsdfjal;', 1, 4, 'joijlfjalskdjflj', 'asfladsfjjadsfldafs;a;al', 'ulj就奥斯丁解放了', '爱上了对方静安寺滴哦路观景', '2018-08-06 19:34:00', '2018-08-06 22:31:36');
 INSERT INTO `projects` VALUES (5, 'ajsiodfjj', 'oaisjdfoiajsoaio', 2, 1, 'asiodfjoadsifjao', 'aosijdgosidfjo', 'oiasdjfsdjfio', 'oasidjfoiadsfjo', '2018-08-06 19:43:47', '2018-08-06 19:43:47');
-INSERT INTO `projects` VALUES (6, 'oaijdfo', 'oaijo', 1, 2, 'oijao', 'oijo;a', 'oij;oj', 'oijoaj', '2018-08-19 13:32:07', '2018-08-19 13:32:07');
 
 -- ----------------------------
 -- Table structure for roles
@@ -764,13 +749,10 @@ INSERT INTO `user_projects` VALUES (1, 4, NULL);
 INSERT INTO `user_projects` VALUES (2, 2, NULL);
 INSERT INTO `user_projects` VALUES (2, 3, NULL);
 INSERT INTO `user_projects` VALUES (2, 4, NULL);
-INSERT INTO `user_projects` VALUES (3, 6, NULL);
 INSERT INTO `user_projects` VALUES (4, 3, NULL);
 INSERT INTO `user_projects` VALUES (4, 4, NULL);
 INSERT INTO `user_projects` VALUES (4, 5, NULL);
-INSERT INTO `user_projects` VALUES (4, 6, NULL);
 INSERT INTO `user_projects` VALUES (5, 5, NULL);
-INSERT INTO `user_projects` VALUES (5, 6, NULL);
 
 -- ----------------------------
 -- Table structure for user_roles
@@ -812,9 +794,9 @@ CREATE TABLE `users`  (
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 1, 'Admin', 'admin@admin.com', 'users/default.png', '$2y$10$W7qLbaAJAh9lrS/FQJRJpuWAdSnhwt.qrLE1mTDolIUiVMn4v.GSm', 'pmH9djxnU5YtjpDx5xAVBtaLABv3lSwduDmRAbKxxklCRpa8CPKUVRLbZMtG', NULL, NULL, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
-INSERT INTO `users` VALUES (2, 1, 'tian', '360726539@qq.com', 'users/default.png', '$2y$10$1fd4W8kKypvo7u16lLEjLua.RQ.aZtAQm7MTdtOOscnNTjfZ7nOcq', '3EFMzibhWx9YOGgYxqTOS1E1eU9KKXkz8YxmqE4L1vtiDWRp1LmutrR7gBwt', '{\"locale\":\"zh_CN\"}', NULL, '2018-08-04 14:18:31', '2018-08-06 13:24:52');
+INSERT INTO `users` VALUES (2, 1, 'tian', '360726539@qq.com', 'users/default.png', '$2y$10$1fd4W8kKypvo7u16lLEjLua.RQ.aZtAQm7MTdtOOscnNTjfZ7nOcq', 'H0DllRsI4XT2DGhGmeBeWll0bSZsx6mcFpZLdrPqSSQoFPEAfDJPieLcb9tQ', '{\"locale\":\"zh_CN\"}', NULL, '2018-08-04 14:18:31', '2018-08-06 13:24:52');
 INSERT INTO `users` VALUES (3, 1, 'abcd', '1234@56789.com', 'users/default.png', '$2y$10$CzkeXpwXO1ROsWLb7ZWVU.A3kl6QiQjBtuD8I4w4dn5EbB17eFUVa', NULL, '{\"locale\":\"zh_CN\"}', NULL, '2018-08-06 19:39:38', '2018-08-06 19:39:38');
-INSERT INTO `users` VALUES (4, 2, '123', '123@456.com', 'users/default.png', '$2y$10$dAGSL34WZkgcxiq919zhi.i26zkuVLsABjy4bFwxCRRzpuKlSPq3e', 'a77ztYNhTuV7N3wi2F03Wo63AO094emyG17pwIkFFt7mkSznt7JbFs6TS4m5', '{\"locale\":\"zh_CN\"}', NULL, '2018-08-06 19:42:33', '2018-08-06 20:29:22');
+INSERT INTO `users` VALUES (4, 2, '123', '123@456.com', 'users/default.png', '$2y$10$dAGSL34WZkgcxiq919zhi.i26zkuVLsABjy4bFwxCRRzpuKlSPq3e', 'IiR82sIxYiqLASQtZuMzLGG32U6UvFrTOQqnY7kzPNvGZUyQ2adzJb3D1GZ8', '{\"locale\":\"zh_CN\"}', NULL, '2018-08-06 19:42:33', '2018-08-06 20:29:22');
 INSERT INTO `users` VALUES (5, 1, '12@34.com', '12@34.com', 'users/default.png', '$2y$10$YDuu3fzcLMNWnWAb8D47perZn3S0KPMAzcjVS5D2hUIPV.EL2yF92', 'snOJTkKUWSCmECJMCYRvvM9qi39asPk734Yi2GtUCkDod7bdbRREMwSVqGEZ', '{\"locale\":\"zh_CN\"}', NULL, '2018-08-06 19:42:57', '2018-08-06 19:42:57');
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -61,7 +61,7 @@
           <a class="js-scroll-trigger" href="{{ route('post') }}">通知发文</a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="{{ route('home') }}">后台管理</a>
+          <a class="js-scroll-trigger" href="{{ route('voyager.dashboard') }}">后台管理</a>
         </li>
         @endguest
       </ul>

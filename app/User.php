@@ -42,13 +42,13 @@ class User extends \TCG\Voyager\Models\User
     // 申请的资金
     public function apply_funds()
     {
-        return $this->belongsTo('App\Fund', 'user_id', 'id');
+        return $this->hasMany('App\Fund', 'user_id', 'id');
     }
 
     // 审批的资金
     public function approve_funds()
     {
-        return $this->belongsTo('App\Fund', 'approve_id', 'id');
+        return $this->hasMany('App\Fund', 'approve_id', 'id');
     }
 
 }
