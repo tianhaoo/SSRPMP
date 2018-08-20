@@ -11,7 +11,7 @@
  Target Server Version : 50722
  File Encoding         : 65001
 
- Date: 20/08/2018 20:27:29
+ Date: 20/08/2018 20:51:19
 */
 
 SET NAMES utf8mb4;
@@ -96,21 +96,21 @@ INSERT INTO `data_rows` VALUES (26, 4, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1,
 INSERT INTO `data_rows` VALUES (27, 4, 'slug', 'text', 'Slug', 1, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"name\"}}', 5);
 INSERT INTO `data_rows` VALUES (28, 4, 'created_at', 'timestamp', 'Created At', 0, 0, 1, 0, 0, 0, '', 6);
 INSERT INTO `data_rows` VALUES (29, 4, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '', 7);
-INSERT INTO `data_rows` VALUES (30, 5, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '', 1);
-INSERT INTO `data_rows` VALUES (31, 5, 'author_id', 'text', 'Author', 1, 0, 1, 1, 0, 1, '', 2);
-INSERT INTO `data_rows` VALUES (32, 5, 'category_id', 'text', 'Category', 1, 0, 1, 1, 1, 0, '', 3);
-INSERT INTO `data_rows` VALUES (33, 5, 'title', 'text', 'Title', 1, 1, 1, 1, 1, 1, '', 4);
-INSERT INTO `data_rows` VALUES (34, 5, 'excerpt', 'text_area', 'Excerpt', 1, 0, 1, 1, 1, 1, '', 5);
-INSERT INTO `data_rows` VALUES (35, 5, 'body', 'rich_text_box', 'Body', 1, 0, 1, 1, 1, 1, '', 6);
+INSERT INTO `data_rows` VALUES (30, 5, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, NULL, 1);
+INSERT INTO `data_rows` VALUES (31, 5, 'author_id', 'text', 'Author', 1, 0, 1, 1, 0, 1, NULL, 2);
+INSERT INTO `data_rows` VALUES (32, 5, 'category_id', 'text', 'Category', 0, 0, 1, 1, 1, 0, NULL, 3);
+INSERT INTO `data_rows` VALUES (33, 5, 'title', 'text', 'Title', 1, 1, 1, 1, 1, 1, NULL, 4);
+INSERT INTO `data_rows` VALUES (34, 5, 'excerpt', 'text_area', 'Excerpt', 0, 0, 1, 1, 1, 1, NULL, 5);
+INSERT INTO `data_rows` VALUES (35, 5, 'body', 'rich_text_box', 'Body', 1, 0, 1, 1, 1, 1, NULL, 6);
 INSERT INTO `data_rows` VALUES (36, 5, 'image', 'image', 'Post Image', 0, 1, 1, 1, 1, 1, '{\"resize\":{\"width\":\"1000\",\"height\":\"null\"},\"quality\":\"70%\",\"upsize\":true,\"thumbnails\":[{\"name\":\"medium\",\"scale\":\"50%\"},{\"name\":\"small\",\"scale\":\"25%\"},{\"name\":\"cropped\",\"crop\":{\"width\":\"300\",\"height\":\"250\"}}]}', 7);
-INSERT INTO `data_rows` VALUES (37, 5, 'slug', 'text', 'Slug', 1, 0, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"title\",\"forceUpdate\":true},\"validation\":{\"rule\":\"unique:posts,slug\"}}', 8);
-INSERT INTO `data_rows` VALUES (38, 5, 'meta_description', 'text_area', 'Meta Description', 1, 0, 1, 1, 1, 1, '', 9);
-INSERT INTO `data_rows` VALUES (39, 5, 'meta_keywords', 'text_area', 'Meta Keywords', 1, 0, 1, 1, 1, 1, '', 10);
+INSERT INTO `data_rows` VALUES (37, 5, 'slug', 'text', 'Slug', 1, 0, 1, 1, 1, 1, '{\r\n    \"validation\": {\r\n        \"rule\": \"required|unique:posts,slug\",\r\n        \"messages\": {\r\n            \"required\": \"文章的链接(URL) 是必须存在的。\",\r\n            \"unique \": \"文章的链接(URL) 必须是唯一的。\"\r\n        }\r\n    }\r\n}', 8);
+INSERT INTO `data_rows` VALUES (38, 5, 'meta_description', 'text_area', 'Meta Description', 0, 0, 1, 1, 1, 1, NULL, 9);
+INSERT INTO `data_rows` VALUES (39, 5, 'meta_keywords', 'text_area', 'Meta Keywords', 0, 0, 1, 1, 1, 1, NULL, 10);
 INSERT INTO `data_rows` VALUES (40, 5, 'status', 'select_dropdown', 'Status', 1, 1, 1, 1, 1, 1, '{\"default\":\"DRAFT\",\"options\":{\"PUBLISHED\":\"published\",\"DRAFT\":\"draft\",\"PENDING\":\"pending\"}}', 11);
-INSERT INTO `data_rows` VALUES (41, 5, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '', 12);
-INSERT INTO `data_rows` VALUES (42, 5, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '', 13);
-INSERT INTO `data_rows` VALUES (43, 5, 'seo_title', 'text', 'SEO Title', 0, 1, 1, 1, 1, 1, '', 14);
-INSERT INTO `data_rows` VALUES (44, 5, 'featured', 'checkbox', 'Featured', 1, 1, 1, 1, 1, 1, '', 15);
+INSERT INTO `data_rows` VALUES (41, 5, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, NULL, 12);
+INSERT INTO `data_rows` VALUES (42, 5, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 13);
+INSERT INTO `data_rows` VALUES (43, 5, 'seo_title', 'text', 'SEO Title', 0, 1, 1, 1, 1, 1, NULL, 14);
+INSERT INTO `data_rows` VALUES (44, 5, 'featured', 'checkbox', 'Featured', 1, 1, 1, 1, 1, 1, NULL, 15);
 INSERT INTO `data_rows` VALUES (45, 6, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '', 1);
 INSERT INTO `data_rows` VALUES (46, 6, 'author_id', 'text', 'Author', 1, 0, 0, 0, 0, 0, '', 2);
 INSERT INTO `data_rows` VALUES (47, 6, 'title', 'text', 'Title', 1, 1, 1, 1, 1, 1, '', 3);
@@ -198,7 +198,7 @@ INSERT INTO `data_types` VALUES (1, 'users', 'users', 'User', 'Users', 'voyager-
 INSERT INTO `data_types` VALUES (2, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, NULL, '2018-08-04 13:39:58', '2018-08-04 13:39:58');
 INSERT INTO `data_types` VALUES (3, 'roles', 'roles', 'Role', 'Roles', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, '', '', 1, 0, NULL, '2018-08-04 13:39:58', '2018-08-04 13:39:58');
 INSERT INTO `data_types` VALUES (4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, '', '', 1, 0, NULL, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
-INSERT INTO `data_types` VALUES (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', '', '', 1, 0, NULL, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
+INSERT INTO `data_types` VALUES (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-08-04 13:39:59', '2018-08-20 20:42:54');
 INSERT INTO `data_types` VALUES (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
 INSERT INTO `data_types` VALUES (7, 'funds', 'funds', 'Fund', 'Funds', 'voyager-receipt', 'App\\Fund', NULL, '\\App\\Http\\Controllers\\Voyager\\FundController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-08-05 09:35:41', '2018-08-19 13:33:45');
 INSERT INTO `data_types` VALUES (8, 'projects', 'projects', '项目', '项目', 'voyager-paw', 'App\\Project', NULL, '\\App\\Http\\Controllers\\Voyager\\ProjectController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-08-06 14:02:10', '2018-08-06 20:12:05');
@@ -594,7 +594,7 @@ CREATE TABLE `posts`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `posts_slug_unique`(`slug`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of posts
@@ -604,6 +604,7 @@ INSERT INTO `posts` VALUES (2, 1, NULL, 'My Sample Post', NULL, 'This is the exc
 INSERT INTO `posts` VALUES (3, 1, NULL, 'Latest Post', NULL, 'This is the excerpt for the latest post', '<p>This is the body for the latest post</p>', 'posts/post3.jpg', 'latest-post', 'This is the meta description', 'keyword1, keyword2, keyword3', 'PUBLISHED', 0, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
 INSERT INTO `posts` VALUES (4, 1, NULL, 'Yarr Post', NULL, 'Reef sails nipperkin bring a spring upon her cable coffer jury mast spike marooned Pieces of Eight poop deck pillage. Clipper driver coxswain galleon hempen halter come about pressgang gangplank boatswain swing the lead. Nipperkin yard skysail swab lanyard Blimey bilge water ho quarter Buccaneer.', '<p>Swab deadlights Buccaneer fire ship square-rigged dance the hempen jig weigh anchor cackle fruit grog furl. Crack Jennys tea cup chase guns pressgang hearties spirits hogshead Gold Road six pounders fathom measured fer yer chains. Main sheet provost come about trysail barkadeer crimp scuttle mizzenmast brig plunder.</p>\n<p>Mizzen league keelhaul galleon tender cog chase Barbary Coast doubloon crack Jennys tea cup. Blow the man down lugsail fire ship pinnace cackle fruit line warp Admiral of the Black strike colors doubloon. Tackle Jack Ketch come about crimp rum draft scuppers run a shot across the bow haul wind maroon.</p>\n<p>Interloper heave down list driver pressgang holystone scuppers tackle scallywag bilged on her anchor. Jack Tar interloper draught grapple mizzenmast hulk knave cable transom hogshead. Gaff pillage to go on account grog aft chase guns piracy yardarm knave clap of thunder.</p>', 'posts/post4.jpg', 'yarr-post', 'this be a meta descript', 'keyword1, keyword2, keyword3', 'PUBLISHED', 0, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
 INSERT INTO `posts` VALUES (5, 2, 1, 'test', NULL, 'lllll;dfssssssl', '<p>asdfdsffasdfasdfasd</p>', NULL, 'test', NULL, NULL, 'PUBLISHED', 0, '2018-08-04 14:23:57', '2018-08-04 14:23:57');
+INSERT INTO `posts` VALUES (6, 2, 1, '标题奥i就', NULL, '摘要', '<p>文章内容</p>', NULL, 'qwer', NULL, NULL, 'PUBLISHED', 0, '2018-08-20 20:43:12', '2018-08-20 20:48:57');
 
 -- ----------------------------
 -- Table structure for projects
