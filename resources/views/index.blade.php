@@ -105,38 +105,36 @@
               <i class="icon-screen-smartphone"></i>
             </span>
             <h4>
-              <strong>Responsive</strong>
+              <strong>发布消息</strong>
             </h4>
-            <p class="text-faded mb-0">Looks great on any screen size!</p>
+            <p class="text-faded mb-0">注册用户可查看关于项目申报的最新动态</p>
           </div>
           <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
             <span class="service-icon rounded-circle mx-auto mb-3">
               <i class="icon-pencil"></i>
             </span>
             <h4>
-              <strong>Redesigned</strong>
+              <strong>网上申报</strong>
             </h4>
-            <p class="text-faded mb-0">Freshly redesigned for Bootstrap 4.</p>
+            <p class="text-faded mb-0">所有申报工作全在线上完成，告别繁琐和等待</p>
           </div>
           <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
             <span class="service-icon rounded-circle mx-auto mb-3">
               <i class="icon-like"></i>
             </span>
             <h4>
-              <strong>Favorited</strong>
+              <strong>经费管理</strong>
             </h4>
-            <p class="text-faded mb-0">Millions of users
-              <i class="fas fa-heart"></i>
-              Start Bootstrap!</p>
+            <p class="text-faded mb-0">师生方便地申请、批准、管理经费</p>
           </div>
           <div class="col-lg-3 col-md-6">
             <span class="service-icon rounded-circle mx-auto mb-3">
               <i class="icon-mustache"></i>
             </span>
             <h4>
-              <strong>Question</strong>
+              <strong>信息收集</strong>
             </h4>
-            <p class="text-faded mb-0">I mustache you a question...</p>
+            <p class="text-faded mb-0">平台负责收集信息，无需到处跑着交表</p>
           </div>
         </div>
       </div>
@@ -210,8 +208,8 @@
     <section class="content-section bg-primary text-white">
       <div class="container text-center">
         <h2 class="mb-4">更多功能...</h2>
-        <a href="#" class="btn btn-xl btn-light mr-4">管理项目</a>
-        <a href="#" class="btn btn-xl btn-dark">管理经费申请</a>
+        <a href="{{ route('voyager.projects.index') }}" class="btn btn-xl btn-light mr-4">管理项目</a>
+        <a href="{{route('voyager.funds.index')}}" class="btn btn-xl btn-dark">管理经费申请</a>
       </div>
     </section>
 
@@ -233,12 +231,12 @@
             </a>
           </li>
           <li class="list-inline-item">
-            <a class="social-link rounded-circle text-white" href="#">
+            <a class="social-link rounded-circle text-white" href="https://github.com/tianhaoo" target="blank">
               <i class="icon-social-github"></i>
             </a>
           </li>
         </ul>
-        <p class="text-muted small mb-0">Copyright &copy; Tianhaoo  </p>
+        <p class="text-muted small mb-0">Copyright &copy; 苏州大学计科院科协科研部 <a href="https://tianhaoo.github.io" target="blank">Tianhaoo</a>  </p>
       </div>
     </footer>
 

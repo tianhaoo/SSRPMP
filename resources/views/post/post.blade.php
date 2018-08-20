@@ -7,7 +7,7 @@
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading">
           <h1>通知发文</h1>
-          <span class="subheading">notifications</span>
+          <span class="subheading">Notifications and Posts</span>
         </div>
       </div>
     </div>

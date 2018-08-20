@@ -11,7 +11,7 @@
  Target Server Version : 50722
  File Encoding         : 65001
 
- Date: 20/08/2018 20:51:19
+ Date: 20/08/2018 22:04:33
 */
 
 SET NAMES utf8mb4;
@@ -62,23 +62,22 @@ CREATE TABLE `data_rows`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `data_rows_data_type_id_foreign`(`data_type_id`) USING BTREE,
   CONSTRAINT `data_rows_data_type_id_foreign` FOREIGN KEY (`data_type_id`) REFERENCES `data_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 104 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 105 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of data_rows
 -- ----------------------------
-INSERT INTO `data_rows` VALUES (1, 1, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '', 1);
-INSERT INTO `data_rows` VALUES (2, 1, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, '', 2);
-INSERT INTO `data_rows` VALUES (3, 1, 'email', 'text', 'Email', 1, 1, 1, 1, 1, 1, '', 3);
-INSERT INTO `data_rows` VALUES (4, 1, 'password', 'password', 'Password', 1, 0, 0, 1, 1, 0, '', 4);
-INSERT INTO `data_rows` VALUES (5, 1, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 0, 0, '', 5);
-INSERT INTO `data_rows` VALUES (6, 1, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '', 6);
-INSERT INTO `data_rows` VALUES (7, 1, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '', 7);
-INSERT INTO `data_rows` VALUES (8, 1, 'avatar', 'image', 'Avatar', 0, 1, 1, 1, 1, 1, '', 8);
-INSERT INTO `data_rows` VALUES (9, 1, 'user_belongsto_role_relationship', 'relationship', 'Role', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsTo\",\"column\":\"role_id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"roles\",\"pivot\":\"0\"}', 10);
-INSERT INTO `data_rows` VALUES (10, 1, 'user_belongstomany_role_relationship', 'relationship', 'Roles', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsToMany\",\"column\":\"id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"user_roles\",\"pivot\":\"1\",\"taggable\":\"0\"}', 11);
-INSERT INTO `data_rows` VALUES (11, 1, 'locale', 'text', 'Locale', 0, 1, 1, 1, 1, 0, '', 12);
-INSERT INTO `data_rows` VALUES (12, 1, 'settings', 'hidden', 'Settings', 0, 0, 0, 0, 0, 0, '', 12);
+INSERT INTO `data_rows` VALUES (1, 1, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, NULL, 1);
+INSERT INTO `data_rows` VALUES (2, 1, 'name', 'text', '姓名', 1, 1, 1, 1, 1, 1, NULL, 2);
+INSERT INTO `data_rows` VALUES (3, 1, 'email', 'text', '邮箱', 1, 1, 1, 1, 1, 1, NULL, 3);
+INSERT INTO `data_rows` VALUES (4, 1, 'password', 'password', '密码', 1, 0, 0, 1, 1, 0, NULL, 4);
+INSERT INTO `data_rows` VALUES (5, 1, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 0, 0, NULL, 5);
+INSERT INTO `data_rows` VALUES (6, 1, 'created_at', 'timestamp', '创建时间', 0, 1, 1, 0, 0, 0, NULL, 6);
+INSERT INTO `data_rows` VALUES (7, 1, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 7);
+INSERT INTO `data_rows` VALUES (8, 1, 'avatar', 'image', '头像', 0, 1, 1, 1, 1, 1, NULL, 8);
+INSERT INTO `data_rows` VALUES (9, 1, 'user_belongsto_role_relationship', 'relationship', '角色', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsTo\",\"column\":\"role_id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"roles\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10);
+INSERT INTO `data_rows` VALUES (10, 1, 'user_belongstomany_role_relationship', 'relationship', '其他角色', 0, 0, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsToMany\",\"column\":\"id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"user_roles\",\"pivot\":\"1\",\"taggable\":\"0\"}', 11);
+INSERT INTO `data_rows` VALUES (12, 1, 'settings', 'hidden', 'Settings', 0, 0, 0, 0, 0, 0, NULL, 12);
 INSERT INTO `data_rows` VALUES (13, 2, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '', 1);
 INSERT INTO `data_rows` VALUES (14, 2, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, '', 2);
 INSERT INTO `data_rows` VALUES (15, 2, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '', 3);
@@ -88,7 +87,7 @@ INSERT INTO `data_rows` VALUES (18, 3, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1,
 INSERT INTO `data_rows` VALUES (19, 3, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '', 3);
 INSERT INTO `data_rows` VALUES (20, 3, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '', 4);
 INSERT INTO `data_rows` VALUES (21, 3, 'display_name', 'text', 'Display Name', 1, 1, 1, 1, 1, 1, '', 5);
-INSERT INTO `data_rows` VALUES (22, 1, 'role_id', 'text', 'Role', 1, 1, 1, 1, 1, 1, '', 9);
+INSERT INTO `data_rows` VALUES (22, 1, 'role_id', 'text', 'Role', 0, 1, 1, 1, 1, 1, NULL, 9);
 INSERT INTO `data_rows` VALUES (23, 4, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '', 1);
 INSERT INTO `data_rows` VALUES (24, 4, 'parent_id', 'select_dropdown', 'Parent', 0, 0, 1, 1, 1, 1, '{\"default\":\"\",\"null\":\"\",\"options\":{\"\":\"-- None --\"},\"relationship\":{\"key\":\"id\",\"label\":\"name\"}}', 2);
 INSERT INTO `data_rows` VALUES (25, 4, 'order', 'text', 'Order', 1, 1, 1, 1, 1, 1, '{\"default\":1}', 3);
@@ -97,20 +96,20 @@ INSERT INTO `data_rows` VALUES (27, 4, 'slug', 'text', 'Slug', 1, 1, 1, 1, 1, 1,
 INSERT INTO `data_rows` VALUES (28, 4, 'created_at', 'timestamp', 'Created At', 0, 0, 1, 0, 0, 0, '', 6);
 INSERT INTO `data_rows` VALUES (29, 4, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '', 7);
 INSERT INTO `data_rows` VALUES (30, 5, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, NULL, 1);
-INSERT INTO `data_rows` VALUES (31, 5, 'author_id', 'text', 'Author', 1, 0, 1, 1, 0, 1, NULL, 2);
-INSERT INTO `data_rows` VALUES (32, 5, 'category_id', 'text', 'Category', 0, 0, 1, 1, 1, 0, NULL, 3);
-INSERT INTO `data_rows` VALUES (33, 5, 'title', 'text', 'Title', 1, 1, 1, 1, 1, 1, NULL, 4);
-INSERT INTO `data_rows` VALUES (34, 5, 'excerpt', 'text_area', 'Excerpt', 0, 0, 1, 1, 1, 1, NULL, 5);
-INSERT INTO `data_rows` VALUES (35, 5, 'body', 'rich_text_box', 'Body', 1, 0, 1, 1, 1, 1, NULL, 6);
-INSERT INTO `data_rows` VALUES (36, 5, 'image', 'image', 'Post Image', 0, 1, 1, 1, 1, 1, '{\"resize\":{\"width\":\"1000\",\"height\":\"null\"},\"quality\":\"70%\",\"upsize\":true,\"thumbnails\":[{\"name\":\"medium\",\"scale\":\"50%\"},{\"name\":\"small\",\"scale\":\"25%\"},{\"name\":\"cropped\",\"crop\":{\"width\":\"300\",\"height\":\"250\"}}]}', 7);
-INSERT INTO `data_rows` VALUES (37, 5, 'slug', 'text', 'Slug', 1, 0, 1, 1, 1, 1, '{\r\n    \"validation\": {\r\n        \"rule\": \"required|unique:posts,slug\",\r\n        \"messages\": {\r\n            \"required\": \"文章的链接(URL) 是必须存在的。\",\r\n            \"unique \": \"文章的链接(URL) 必须是唯一的。\"\r\n        }\r\n    }\r\n}', 8);
+INSERT INTO `data_rows` VALUES (31, 5, 'author_id', 'text', '作者', 1, 0, 1, 1, 0, 1, NULL, 2);
+INSERT INTO `data_rows` VALUES (32, 5, 'category_id', 'text', '分类', 0, 0, 1, 1, 1, 0, NULL, 3);
+INSERT INTO `data_rows` VALUES (33, 5, 'title', 'text', '标题', 1, 1, 1, 1, 1, 1, NULL, 4);
+INSERT INTO `data_rows` VALUES (34, 5, 'excerpt', 'text_area', '简介', 0, 0, 1, 1, 1, 1, NULL, 5);
+INSERT INTO `data_rows` VALUES (35, 5, 'body', 'rich_text_box', '内容', 1, 0, 1, 1, 1, 1, NULL, 6);
+INSERT INTO `data_rows` VALUES (36, 5, 'image', 'image', '图片', 0, 1, 1, 1, 1, 1, '{\"resize\":{\"width\":\"1000\",\"height\":\"null\"},\"quality\":\"70%\",\"upsize\":true,\"thumbnails\":[{\"name\":\"medium\",\"scale\":\"50%\"},{\"name\":\"small\",\"scale\":\"25%\"},{\"name\":\"cropped\",\"crop\":{\"width\":\"300\",\"height\":\"250\"}}]}', 7);
+INSERT INTO `data_rows` VALUES (37, 5, 'slug', 'text', '链接', 1, 0, 1, 1, 1, 1, '{\r\n    \"validation\": {\r\n        \"rule\": \"required|unique:posts,slug\",\r\n        \"messages\": {\r\n            \"required\": \"文章的链接(URL) 是必须存在的。\",\r\n            \"unique \": \"文章的链接(URL) 必须是唯一的。\"\r\n        }\r\n    }\r\n}', 8);
 INSERT INTO `data_rows` VALUES (38, 5, 'meta_description', 'text_area', 'Meta Description', 0, 0, 1, 1, 1, 1, NULL, 9);
 INSERT INTO `data_rows` VALUES (39, 5, 'meta_keywords', 'text_area', 'Meta Keywords', 0, 0, 1, 1, 1, 1, NULL, 10);
-INSERT INTO `data_rows` VALUES (40, 5, 'status', 'select_dropdown', 'Status', 1, 1, 1, 1, 1, 1, '{\"default\":\"DRAFT\",\"options\":{\"PUBLISHED\":\"published\",\"DRAFT\":\"draft\",\"PENDING\":\"pending\"}}', 11);
-INSERT INTO `data_rows` VALUES (41, 5, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, NULL, 12);
-INSERT INTO `data_rows` VALUES (42, 5, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 13);
-INSERT INTO `data_rows` VALUES (43, 5, 'seo_title', 'text', 'SEO Title', 0, 1, 1, 1, 1, 1, NULL, 14);
-INSERT INTO `data_rows` VALUES (44, 5, 'featured', 'checkbox', 'Featured', 1, 1, 1, 1, 1, 1, NULL, 15);
+INSERT INTO `data_rows` VALUES (40, 5, 'status', 'select_dropdown', '状态', 1, 1, 1, 1, 1, 1, '{\"default\":\"发布\",\"options\":{\"PUBLISHED\":\"发布\",\"DRAFT\":\"草稿\",\"PENDING\":\"审核中\"}}', 11);
+INSERT INTO `data_rows` VALUES (41, 5, 'created_at', 'timestamp', '创建时间', 0, 1, 1, 0, 0, 0, NULL, 12);
+INSERT INTO `data_rows` VALUES (42, 5, 'updated_at', 'timestamp', '更新时间', 0, 1, 1, 0, 0, 0, NULL, 13);
+INSERT INTO `data_rows` VALUES (43, 5, 'seo_title', 'text', 'SEO Title', 0, 0, 1, 1, 1, 1, NULL, 14);
+INSERT INTO `data_rows` VALUES (44, 5, 'featured', 'checkbox', '喜欢', 1, 0, 1, 1, 1, 1, NULL, 15);
 INSERT INTO `data_rows` VALUES (45, 6, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '', 1);
 INSERT INTO `data_rows` VALUES (46, 6, 'author_id', 'text', 'Author', 1, 0, 0, 0, 0, 0, '', 2);
 INSERT INTO `data_rows` VALUES (47, 6, 'title', 'text', 'Title', 1, 1, 1, 1, 1, 1, '', 3);
@@ -129,7 +128,7 @@ INSERT INTO `data_rows` VALUES (59, 7, 'project_id', 'text', 'Project Id', 0, 1,
 INSERT INTO `data_rows` VALUES (60, 7, 'fno', 'text', '流水号', 0, 0, 1, 0, 0, 0, NULL, 5);
 INSERT INTO `data_rows` VALUES (61, 7, 'apply_reason', 'text_area', '申请理由', 0, 0, 1, 1, 1, 1, NULL, 6);
 INSERT INTO `data_rows` VALUES (62, 7, 'apply_money', 'text', '申请金额', 0, 1, 1, 1, 1, 1, NULL, 7);
-INSERT INTO `data_rows` VALUES (63, 7, 'status', 'text', '申请单状态', 0, 1, 1, 0, 0, 0, NULL, 8);
+INSERT INTO `data_rows` VALUES (63, 7, 'status', 'select_dropdown', '申请单状态', 0, 1, 1, 1, 1, 1, '{\"default\":\"申请中\",\"options\":{\"申请中\":\"申请中\",\"审批中\":\"审批中\",\"结报中\":\"结报中\",\"结束\":\"结束\"}}', 8);
 INSERT INTO `data_rows` VALUES (64, 7, 'approve_id', 'text', 'Approve Id', 0, 1, 1, 1, 1, 1, NULL, 4);
 INSERT INTO `data_rows` VALUES (66, 7, 'approve_reason', 'text_area', '审批理由', 0, 0, 1, 1, 1, 1, NULL, 10);
 INSERT INTO `data_rows` VALUES (67, 7, 'approve_money', 'text', '审批金额', 0, 1, 1, 1, 1, 1, NULL, 11);
@@ -165,6 +164,7 @@ INSERT INTO `data_rows` VALUES (100, 7, 'fund_belongsto_project_relationship', '
 INSERT INTO `data_rows` VALUES (101, 7, 'reimburse_money', 'text', '结报金额', 0, 1, 1, 1, 1, 1, NULL, 14);
 INSERT INTO `data_rows` VALUES (102, 7, 'approve_time', 'text', '审批时间', 0, 1, 1, 0, 0, 0, NULL, 9);
 INSERT INTO `data_rows` VALUES (103, 8, 'attachment', 'file', '附件', 0, 1, 1, 1, 1, 1, NULL, 10);
+INSERT INTO `data_rows` VALUES (104, 1, 'uno', 'text', '学号/工号', 0, 1, 1, 1, 1, 1, NULL, 9);
 
 -- ----------------------------
 -- Table structure for data_types
@@ -194,7 +194,7 @@ CREATE TABLE `data_types`  (
 -- ----------------------------
 -- Records of data_types
 -- ----------------------------
-INSERT INTO `data_types` VALUES (1, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', '', '', 1, 0, NULL, '2018-08-04 13:39:58', '2018-08-04 13:39:58');
+INSERT INTO `data_types` VALUES (1, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-08-04 13:39:58', '2018-08-20 20:58:51');
 INSERT INTO `data_types` VALUES (2, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, NULL, '2018-08-04 13:39:58', '2018-08-04 13:39:58');
 INSERT INTO `data_types` VALUES (3, 'roles', 'roles', 'Role', 'Roles', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, '', '', 1, 0, NULL, '2018-08-04 13:39:58', '2018-08-04 13:39:58');
 INSERT INTO `data_types` VALUES (4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, '', '', 1, 0, NULL, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
@@ -233,12 +233,13 @@ CREATE TABLE `funds`  (
   CONSTRAINT `funds_users_approve_id` FOREIGN KEY (`approve_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `funds_users_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `projects_users_project_id` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of funds
 -- ----------------------------
 INSERT INTO `funds` VALUES (18, 4, 2, '2018082020123219', '第一条申请', '1', '结束', 5, '2018-08-20 20:13:34', '同意', '100', '2018-08-20 20:14:32', '12345678910101010', '99', '2018-08-20 20:15:54', '2018-08-20 20:12:32', '2018-08-20 20:15:54');
+INSERT INTO `funds` VALUES (19, 4, 2, '2018082021035615', '申请理由。。。。。。。。。。', '200', '审批中', 5, '2018-08-20 21:04:36', 'tongyi', '200', NULL, NULL, NULL, NULL, '2018-08-20 21:03:56', '2018-08-20 21:04:36');
 
 -- ----------------------------
 -- Table structure for menu_items
@@ -685,7 +686,7 @@ INSERT INTO `settings` VALUES (2, 'site.description', 'Site Description', '科�
 INSERT INTO `settings` VALUES (3, 'site.logo', 'Site Logo', '', '', 'image', 6, 'Site');
 INSERT INTO `settings` VALUES (4, 'site.google_analytics_tracking_id', 'Google Analytics Tracking ID', NULL, '', 'text', 7, 'Site');
 INSERT INTO `settings` VALUES (5, 'admin.bg_image', 'Admin Background Image', '', '', 'image', 5, 'Admin');
-INSERT INTO `settings` VALUES (6, 'admin.title', 'Admin Title', 'Voyager', '', 'text', 1, 'Admin');
+INSERT INTO `settings` VALUES (6, 'admin.title', 'Admin Title', 'SSRPMP', '', 'text', 1, 'Admin');
 INSERT INTO `settings` VALUES (7, 'admin.description', 'Admin Description', 'Welcome to Voyager. The Missing Admin for Laravel', '', 'text', 2, 'Admin');
 INSERT INTO `settings` VALUES (8, 'admin.loader', 'Admin Loader', '', '', 'image', 3, 'Admin');
 INSERT INTO `settings` VALUES (9, 'admin.icon_image', 'Admin Icon Image', '', '', 'image', 4, 'Admin');
@@ -837,9 +838,9 @@ CREATE TABLE `users`  (
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 1, 'Admin', 'admin@admin.com', 'users/default.png', '$2y$10$W7qLbaAJAh9lrS/FQJRJpuWAdSnhwt.qrLE1mTDolIUiVMn4v.GSm', 'pmH9djxnU5YtjpDx5xAVBtaLABv3lSwduDmRAbKxxklCRpa8CPKUVRLbZMtG', NULL, NULL, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
-INSERT INTO `users` VALUES (2, 1, 'tian', '360726539@qq.com', 'users/default.png', '$2y$10$1fd4W8kKypvo7u16lLEjLua.RQ.aZtAQm7MTdtOOscnNTjfZ7nOcq', 'HFAL4YqLM8wPxrpHDHBbiv0FWYhj8ZY1Whj4PYAYQNp2AyaEcgY9nigad5lY', '{\"locale\":\"zh_CN\"}', NULL, '2018-08-04 14:18:31', '2018-08-06 13:24:52');
+INSERT INTO `users` VALUES (2, 1, 'tian', '360726539@qq.com', 'users/default.png', '$2y$10$1fd4W8kKypvo7u16lLEjLua.RQ.aZtAQm7MTdtOOscnNTjfZ7nOcq', 'cflBskWvgrsfrVJMvSxHJfXAYRXRqTm06xZcbuoFVG1tNU1Q6mytFEIaHtER', '{\"locale\":\"zh_CN\"}', NULL, '2018-08-04 14:18:31', '2018-08-06 13:24:52');
 INSERT INTO `users` VALUES (3, 1, 'abcd', '1234@56789.com', 'users/default.png', '$2y$10$CzkeXpwXO1ROsWLb7ZWVU.A3kl6QiQjBtuD8I4w4dn5EbB17eFUVa', NULL, '{\"locale\":\"zh_CN\"}', NULL, '2018-08-06 19:39:38', '2018-08-06 19:39:38');
-INSERT INTO `users` VALUES (4, 2, '123@456.com', '123@456.com', 'users/default.png', '$2y$10$dAGSL34WZkgcxiq919zhi.i26zkuVLsABjy4bFwxCRRzpuKlSPq3e', 'zIX6z52n7xIRNm1IWGNocC1gBxAX6yGcHh20aVT1WRIT9jZ8dGqITC5qzKdq', '{\"locale\":\"zh_CN\"}', NULL, '2018-08-06 19:42:33', '2018-08-20 14:52:37');
-INSERT INTO `users` VALUES (5, 3, '12@34.com', '12@34.com', 'users/default.png', '$2y$10$YDuu3fzcLMNWnWAb8D47perZn3S0KPMAzcjVS5D2hUIPV.EL2yF92', 'R06glCQ8Cfenl3Wm64eb3aiOzNCq7Qme70oZekT1pRDge8rh7JUIHMRFwlo5', '{\"locale\":\"zh_CN\"}', NULL, '2018-08-06 19:42:57', '2018-08-20 14:52:53');
+INSERT INTO `users` VALUES (4, 2, '123@456.com', '123@456.com', 'users/default.png', '$2y$10$dAGSL34WZkgcxiq919zhi.i26zkuVLsABjy4bFwxCRRzpuKlSPq3e', 'kxXGPIeVIWn4ToN9jM856sbu6yJCMyk06QYrRSbdi2BU2dwFRCw7SjyIbPff', '{\"locale\":\"zh_CN\"}', NULL, '2018-08-06 19:42:33', '2018-08-20 14:52:37');
+INSERT INTO `users` VALUES (5, 3, '12@34.com', '12@34.com', 'users/default.png', '$2y$10$YDuu3fzcLMNWnWAb8D47perZn3S0KPMAzcjVS5D2hUIPV.EL2yF92', 'gYe4CaZS5uqjOPL7Kg3nRqjjAtd6B8irARrnxHA08MAu0yANBP6sfKjQchix', '{\"locale\":\"zh_CN\"}', NULL, '2018-08-06 19:42:57', '2018-08-20 14:52:53');
 
 SET FOREIGN_KEY_CHECKS = 1;
