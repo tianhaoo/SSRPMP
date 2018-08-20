@@ -251,155 +251,168 @@ class FundController extends Controller
         }
 
         // 处理申请流程中编辑表单的一些变化
-        $editFund = Fund::find($id);
-        $isTeacher = Voyager::can('browse_media');
-        if($editFund->status == "申请中"){
-            // 即将开始审批阶段
-            // 当前状态是申请中，学生可以编辑申请理由，申请金额，申请项目，老师则可以读取申请理由，申请金额和申请项目，并编辑审批理由和审批金额
-            if(! $isTeacher){
-                $newEditRows = array();
-                foreach($dataType->EditRows as $row){
-                    if ($row->field == "apply_reason" || $row->field == "apply_money" || $row->field == "fund_belongsto_project_relationship")
-                        array_push($newEditRows, $row);
+        // 超级管理员不参与判断（有browse database权限的人）
+        if(! Voyager::can('browse_database')){
+            $editFund = Fund::find($id);
+            $isTeacher = Voyager::can('browse_media');
+            if($editFund->status == "申请中"){
+                // 即将开始审批阶段
+                // 当前状态是申请中，学生可以编辑申请理由，申请金额，申请项目，老师则可以读取申请理由，申请金额和申请项目，并编辑审批理由和审批金额
+                if(! $isTeacher){
+                    $newEditRows = array();
+                    foreach($dataType->EditRows as $row){
+                        if ($row->field == "apply_reason" || $row->field == "apply_money" || $row->field == "fund_belongsto_project_relationship")
+                            array_push($newEditRows, $row);
+                    }
+                    $dataType->editRows = collect($newEditRows);
+                } elseif($isTeacher) {
+                    $newEditRows = array();
+                    $readonly = array(
+                        "textarea" => array("apply_reason",),
+                        "input" => array("apply_money"), 
+                    );
+                    $disabled = array(
+                        "project_id",
+                    );
+                    foreach($dataType->EditRows as $row){
+                        if ($row->field == "apply_reason" 
+                        || $row->field == "apply_money" 
+                        || $row->field == "fund_belongsto_project_relationship"
+                        || $row->field == "approve_reason"
+                        || $row->field == "approve_money"
+                        )
+                            array_push($newEditRows, $row);
+                    }
+                    $dataType->editRows = collect($newEditRows);               
+                } else{
+                    return redirect()
+                    ->back()
+                    ->with([
+                        'message' => "获取当前用户信息失败，请稍后再试，或联系管理员",
+                        "alert-type" => 'error',
+                    ]);
                 }
-                $dataType->editRows = collect($newEditRows);
-            } elseif($isTeacher) {
-                $newEditRows = array();
-                $readonly = array(
-                    "textarea" => array("apply_reason",),
-                    "input" => array("apply_money"), 
-                );
-                $disabled = array(
-                    "project_id",
-                );
-                foreach($dataType->EditRows as $row){
-                    if ($row->field == "apply_reason" 
-                    || $row->field == "apply_money" 
-                    || $row->field == "fund_belongsto_project_relationship"
-                    || $row->field == "approve_reason"
-                    || $row->field == "approve_money"
-                    )
-                        array_push($newEditRows, $row);
-                }
-                $dataType->editRows = collect($newEditRows);               
-            } else{
-                return redirect()
-                ->back()
-                ->with([
-                    'message' => "获取当前用户信息失败，请稍后再试，或联系管理员",
-                    "alert-type" => 'error',
-                ]);
-            }
 
-        } elseif($editFund->status == "审批中"){
-            // 即将开始结报阶段
-            // 当前状态是审批中，老师可以编辑审批理由和审批金额，学生可以查看申请理由，申请金额，申请项目，审批理由和审批金额，并编辑报销单编号和结报金额
-            if($isTeacher){
-                $newEditRows = array();
-                $readonly = array(
-                    "textarea" => array("apply_reason",),
-                    "input" => array("apply_money"), 
-                );
-                $disabled = array(
-                    "project_id",
-                );
-                foreach($dataType->EditRows as $row){
-                    if ($row->field == "apply_reason" 
-                    || $row->field == "apply_money" 
-                    || $row->field == "fund_belongsto_project_relationship"
-                    || $row->field == "approve_reason"
-                    || $row->field == "approve_money"
-                    )
-                        array_push($newEditRows, $row);
+            } elseif($editFund->status == "审批中"){
+                // 即将开始结报阶段
+                // 当前状态是审批中，老师可以编辑审批理由和审批金额，学生可以查看申请理由，申请金额，申请项目，审批理由和审批金额，并编辑报销单编号和结报金额
+                if($isTeacher){
+                    $newEditRows = array();
+                    $readonly = array(
+                        "textarea" => array("apply_reason",),
+                        "input" => array("apply_money"), 
+                    );
+                    $disabled = array(
+                        "project_id",
+                    );
+                    foreach($dataType->EditRows as $row){
+                        if ($row->field == "apply_reason" 
+                        || $row->field == "apply_money" 
+                        || $row->field == "fund_belongsto_project_relationship"
+                        || $row->field == "approve_reason"
+                        || $row->field == "approve_money"
+                        )
+                            array_push($newEditRows, $row);
+                    }
+                    $dataType->editRows = collect($newEditRows);
+                } elseif(! $isTeacher){
+                    $newEditRows = array();
+                    $readonly = array(
+                        "textarea" => array("apply_reason", "approve_reason"),
+                        "input" => array("apply_money", "approve_money"), 
+                    );
+                    $disabled = array(
+                        "project_id",
+                    );
+                    foreach($dataType->EditRows as $row){
+                        if ($row->field == "apply_reason" 
+                        || $row->field == "apply_money" 
+                        || $row->field == "fund_belongsto_project_relationship"
+                        || $row->field == "approve_reason"
+                        || $row->field == "approve_money"
+                        || $row->field == "reimburse_no"
+                        || $row->field == "reimburse_money"
+                        )
+                            array_push($newEditRows, $row);
+                    }
+                    $dataType->editRows = collect($newEditRows);
+                } else {
+                    return redirect()
+                    ->back()
+                    ->with([
+                        'message' => "获取当前用户信息失败，请稍后再试，或联系管理员",
+                        "alert-type" => 'error',
+                    ]);
                 }
-                $dataType->editRows = collect($newEditRows);
-            } elseif(! $isTeacher){
-                $newEditRows = array();
-                $readonly = array(
-                    "textarea" => array("apply_reason", "approve_reason"),
-                    "input" => array("apply_money", "approve_money"), 
-                );
-                $disabled = array(
-                    "project_id",
-                );
-                foreach($dataType->EditRows as $row){
-                    if ($row->field == "apply_reason" 
-                    || $row->field == "apply_money" 
-                    || $row->field == "fund_belongsto_project_relationship"
-                    || $row->field == "approve_reason"
-                    || $row->field == "approve_money"
-                    || $row->field == "reimburse_no"
-                    || $row->field == "reimburse_money"
-                    )
-                        array_push($newEditRows, $row);
+            } elseif($editFund->status == "结报中"){
+                if(!$isTeacher){
+                    $newEditRows = array();
+                    $readonly = array(
+                        "textarea" => array("apply_reason", "approve_reason"),
+                        "input" => array("apply_money", "approve_money"), 
+                    );
+                    $disabled = array(
+                        "project_id",
+                    );
+                    foreach($dataType->EditRows as $row){
+                        if ($row->field == "apply_reason" 
+                        || $row->field == "apply_money" 
+                        || $row->field == "fund_belongsto_project_relationship"
+                        || $row->field == "approve_reason"
+                        || $row->field == "approve_money"
+                        || $row->field == "reimburse_no"
+                        || $row->field == "reimburse_money"
+                        )
+                            array_push($newEditRows, $row);
+                    }
+                    $dataType->editRows = collect($newEditRows);
+                } elseif($isTeacher){
+                    $newEditRows = array();
+                    $readonly = array(
+                        "textarea" => array("apply_reason", "approve_reason", ),
+                        "input" => array("reimburse_no"), 
+                    );
+                    $disabled = array(
+                        "project_id",
+                    );
+                    foreach($dataType->EditRows as $row){
+                        if ($row->field == "apply_reason" 
+                        || $row->field == "apply_money" 
+                        || $row->field == "fund_belongsto_project_relationship"
+                        || $row->field == "approve_reason"
+                        || $row->field == "approve_money"
+                        || $row->field == "reimburse_no"
+                        || $row->field == "reimburse_money"
+                        )
+                            array_push($newEditRows, $row);
+                    }
+                    $dataType->editRows = collect($newEditRows);
+                } else {
+                    return redirect()
+                    ->back()
+                    ->with([
+                        'message' => "获取当前用户信息失败，请稍后再试，或联系管理员",
+                        "alert-type" => 'error',
+                    ]);
                 }
-                $dataType->editRows = collect($newEditRows);
-            } else {
-                return redirect()
-                ->back()
-                ->with([
-                    'message' => "获取当前用户信息失败，请稍后再试，或联系管理员",
-                    "alert-type" => 'error',
-                ]);
-            }
-        } elseif($editFund->status == "结报中"){
-            if(!$isTeacher){
-                $newEditRows = array();
-                $readonly = array(
-                    "textarea" => array("apply_reason", "approve_reason"),
-                    "input" => array("apply_money", "approve_money"), 
-                );
-                $disabled = array(
-                    "project_id",
-                );
-                foreach($dataType->EditRows as $row){
-                    if ($row->field == "apply_reason" 
-                    || $row->field == "apply_money" 
-                    || $row->field == "fund_belongsto_project_relationship"
-                    || $row->field == "approve_reason"
-                    || $row->field == "approve_money"
-                    || $row->field == "reimburse_no"
-                    || $row->field == "reimburse_money"
-                    )
-                        array_push($newEditRows, $row);
-                }
-                $dataType->editRows = collect($newEditRows);
-            } elseif($isTeacher){
-                $newEditRows = array();
+            } elseif($editFund->status == "结束"){
                 $readonly = array(
                     "textarea" => array("apply_reason", "approve_reason", ),
-                    "input" => array("reimburse_no"), 
+                    "input" => array("reimburse_no", "apply_money", "approve_money", "reimburse_money", ), 
                 );
                 $disabled = array(
                     "project_id",
+                    "user_id",
+                    "approve_id",
                 );
-                foreach($dataType->EditRows as $row){
-                    if ($row->field == "apply_reason" 
-                    || $row->field == "apply_money" 
-                    || $row->field == "fund_belongsto_project_relationship"
-                    || $row->field == "approve_reason"
-                    || $row->field == "approve_money"
-                    || $row->field == "reimburse_no"
-                    || $row->field == "reimburse_money"
-                    )
-                        array_push($newEditRows, $row);
-                }
-                $dataType->editRows = collect($newEditRows);
             } else {
                 return redirect()
                 ->back()
                 ->with([
-                    'message' => "获取当前用户信息失败，请稍后再试，或联系管理员",
+                    'message' => "获取当前经费申请信息失败，请稍后再试，或联系管理员",
                     "alert-type" => 'error',
                 ]);
             }
-        } else {
-            return redirect()
-            ->back()
-            ->with([
-                'message' => "获取当前经费申请信息失败，请稍后再试，或联系管理员",
-                "alert-type" => 'error',
-            ]);
         }
 
 
@@ -441,11 +454,6 @@ class FundController extends Controller
         // Check permission
         $this->authorize('edit', $data);
 
-        // // 不同的人不同的阶段有不同的权限
-        // $editFund = Fund::find($id);
-        // $isTeacher = Voyager::can('browse_media');
-
-
         // Validate fields with ajax
         $val = $this->validateBread($request->all(), $dataType->editRows, $dataType->name, $id);
 
@@ -455,6 +463,147 @@ class FundController extends Controller
         }
 
         if (!$request->ajax()) {
+
+            // 超级管理员不参与判断（有browse database权限的人）
+            if(! Voyager::can('browse_database')){
+                // 不同的人不同的阶段有不同的权限
+                $updateFund = Fund::find($id);
+                $isTeacher = Voyager::can('browse_media');
+                if($updateFund->status == "申请中"){
+                    if($isTeacher){
+                        // 确保只能编辑能编辑的字段
+                        $newEditRows = array();
+                        foreach($dataType->EditRows as $row){
+                            if ($row->field == "approve_reason"
+                            || $row->field == "approve_money"
+                            )
+                                array_push($newEditRows, $row);
+                        }
+                        $dataType->editRows = collect($newEditRows);
+
+                        // 给相应的字段赋值
+                        $updateFund->approve_time = date("Y-m-d H:i:s");
+                        $updateFund->status = "审批中";
+                        $updateFund->approve_id = $request->user()->id;
+                        if(!$updateFund->save()){
+                            return redirect()
+                            ->back()
+                            ->with([
+                                'message' => "创建流水号和写入申请状态失败，请稍后再试，或联系管理员",
+                                "alert-type" => 'error',
+                            ]);
+                        }
+                    } elseif(! $isTeacher){
+                        $newEditRows = array();
+                        foreach($dataType->EditRows as $row){
+                            if ($row->field == "apply_reason" || $row->field == "apply_money" || $row->field == "fund_belongsto_project_relationship")
+                                array_push($newEditRows, $row);
+                        }
+                        $dataType->editRows = collect($newEditRows);
+                    } else {
+                        return redirect()
+                        ->back()
+                        ->with([
+                            'message' => "获取当前用户信息失败，请稍后再试，或联系管理员",
+                            "alert-type" => 'error',
+                        ]);
+                    }
+                } elseif($updateFund->status == "审批中"){
+                    if($isTeacher){
+                        $newEditRows = array();
+                        foreach($dataType->EditRows as $row){
+                            if ($row->field == "approve_reason"
+                            || $row->field == "approve_money"
+                            )
+                                array_push($newEditRows, $row);
+                        }
+                        $dataType->editRows = collect($newEditRows);
+                    } elseif(! $isTeacher){
+                        $newEditRows = array();
+                        foreach($dataType->EditRows as $row){
+                            if ($row->field == "reimburse_no"
+                            || $row->field == "reimburse_money"
+                            )
+                                array_push($newEditRows, $row);
+                        }
+                        $dataType->editRows = collect($newEditRows);
+                        // 给相应的字段赋值
+                        $updateFund->reimburse_time = date("Y-m-d H:i:s");
+                        $updateFund->status = "结报中";
+                        if(!$updateFund->save()){
+                            return redirect()
+                            ->back()
+                            ->with([
+                                'message' => "创建流水号和写入申请状态失败，请稍后再试，或联系管理员",
+                                "alert-type" => 'error',
+                            ]);
+                        }
+
+                    } else {
+                        return redirect()
+                        ->back()
+                        ->with([
+                            'message' => "获取当前用户信息失败，请稍后再试，或联系管理员",
+                            "alert-type" => 'error',
+                        ]);
+                    }
+
+                } elseif($updateFund->status == "结报中"){
+                    if(!$isTeacher){
+                        $newEditRows = array();
+                        foreach($dataType->EditRows as $row){
+                            if ($row->field == "reimburse_no"
+                            || $row->field == "reimburse_money"
+                            )
+                                array_push($newEditRows, $row);
+                        }
+                        $dataType->editRows = collect($newEditRows);
+                    } elseif($isTeacher){
+                        $newEditRows = array();
+                        foreach($dataType->EditRows as $row){
+                            if ($row->field == "apply_money" 
+                            || $row->field == "fund_belongsto_project_relationship"
+                            || $row->field == "approve_money"
+                            || $row->field == "reimburse_money"
+                            )
+                                array_push($newEditRows, $row);
+                        }
+                        $dataType->editRows = collect($newEditRows);
+
+                        // 给相应的字段赋值
+                        $updateFund->end_time = date("Y-m-d H:i:s");
+                        $updateFund->status = "结束";
+                        if(!$updateFund->save()){
+                            return redirect()
+                            ->back()
+                            ->with([
+                                'message' => "创建流水号和写入申请状态失败，请稍后再试，或联系管理员",
+                                "alert-type" => 'error',
+                            ]);
+                        }
+                    } else {
+                        return redirect()
+                        ->back()
+                        ->with([
+                            'message' => "获取当前用户信息失败，请稍后再试，或联系管理员",
+                            "alert-type" => 'error',
+                        ]);
+                    }
+
+                } elseif($updateFund->status == "结束"){
+                    $newEditRows = array();
+                    $dataType->editRows = collect($newEditRows);
+                } else {
+                    return redirect()
+                    ->back()
+                    ->with([
+                        'message' => "更新当前经费申请信息失败，请稍后再试，或联系管理员",
+                        "alert-type" => 'error',
+                    ]);
+                }
+
+            }
+
             $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
             
             event(new BreadDataUpdated($dataType, $data));
@@ -512,12 +661,15 @@ class FundController extends Controller
         }
 
         // 创建新的经费管理的时候，只能添加申请理由，申请经费和对应的项目
-        $newAddRows = array();
-        foreach($dataType->addRows as $row){
-            if ($row->field == "apply_reason" || $row->field == "apply_money" || $row->field == "fund_belongsto_project_relationship")
-                array_push($newAddRows, $row);
+        // 超级管理员不参与判断（有browse database权限的人）
+        if(! Voyager::can('browse_database')){
+            $newAddRows = array();
+            foreach($dataType->addRows as $row){
+                if ($row->field == "apply_reason" || $row->field == "apply_money" || $row->field == "fund_belongsto_project_relationship")
+                    array_push($newAddRows, $row);
+            }
+            $dataType->addRows = collect($newAddRows); 
         }
-        $dataType->addRows = collect($newAddRows); 
 
 
         return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
@@ -547,14 +699,24 @@ class FundController extends Controller
         }
 
         if (!$request->has('_validate')) {
+
+            // 创建的时候只能创建申请理由，申请金额和项目名称
+            $newAddRows = array();
+            foreach($dataType->addRows as $row){
+                if ($row->field == "apply_reason" || $row->field == "apply_money" || $row->field == "project_id")
+                    array_push($newAddRows, $row);
+            }
+            $dataType->addRows = collect($newAddRows); 
+
             $data = $this->insertUpdateData($request, $slug, $dataType->addRows, new $dataType->model_name());
             
 
             event(new BreadDataAdded($dataType, $data));
+            
 
             // 根据创建时间自动生成流水号，并在创建的时候将状态设置为申请
             $fund = Fund::find($data->id);
-            $fund->fno = str_replace("-","",date("Y-m-dH-i-s"));
+            $fund->fno = str_replace("-","",date("Y-m-dH-i-s")) . rand(5,25);
             $fund->status = "申请中";
             $fund->user_id = $request->user()->id;
             if(!$fund->save()){
