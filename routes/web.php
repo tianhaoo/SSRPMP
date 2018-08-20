@@ -11,18 +11,20 @@
 |
 */
 
-Route::get('/', 'IndexController@index');
+Route::get('/x/', 'IndexController@index')->name('index');
 
 // post route
-Route::get('/post/{slug}','PostController@show')->name('showpost');
-Route::get('/post', 'PostController@index')->name('post');
+Route::get('/x/post/{slug}','PostController@show')->name('showpost');
+Route::get('/x/post', 'PostController@index')->name('post');
 
-Auth::routes();
+Route::group(['prefix' => 'x'], function () {
+    Auth::routes();
+});
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'x/admin'], function () {
     Voyager::routes();
 
     Route::get('/login', ['uses' => 'Auth\LoginController@showLoginForm', 'as' => 'voyager.login']);

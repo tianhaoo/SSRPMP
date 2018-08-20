@@ -15,7 +15,7 @@ return [
         'default_role'                 => 'user',
         'namespace'                    => null,
         'default_avatar'               => 'users/default.png',
-        'redirect'                     => '/admin',
+        'redirect'                     => 'x/admin',
     ],
 
     /*
@@ -149,7 +149,7 @@ return [
                 'icon_class' => 'voyager-person',
             ],
             'Home' => [
-                'route'        => '/',
+                'route'        => '/x',
                 'icon_class'   => 'voyager-home',
                 'target_blank' => true,
             ],
