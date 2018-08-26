@@ -11,7 +11,7 @@
  Target Server Version : 50722
  File Encoding         : 65001
 
- Date: 20/08/2018 22:04:33
+ Date: 26/08/2018 14:54:15
 */
 
 SET NAMES utf8mb4;
@@ -595,7 +595,7 @@ CREATE TABLE `posts`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `posts_slug_unique`(`slug`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of posts
@@ -606,6 +606,7 @@ INSERT INTO `posts` VALUES (3, 1, NULL, 'Latest Post', NULL, 'This is the excerp
 INSERT INTO `posts` VALUES (4, 1, NULL, 'Yarr Post', NULL, 'Reef sails nipperkin bring a spring upon her cable coffer jury mast spike marooned Pieces of Eight poop deck pillage. Clipper driver coxswain galleon hempen halter come about pressgang gangplank boatswain swing the lead. Nipperkin yard skysail swab lanyard Blimey bilge water ho quarter Buccaneer.', '<p>Swab deadlights Buccaneer fire ship square-rigged dance the hempen jig weigh anchor cackle fruit grog furl. Crack Jennys tea cup chase guns pressgang hearties spirits hogshead Gold Road six pounders fathom measured fer yer chains. Main sheet provost come about trysail barkadeer crimp scuttle mizzenmast brig plunder.</p>\n<p>Mizzen league keelhaul galleon tender cog chase Barbary Coast doubloon crack Jennys tea cup. Blow the man down lugsail fire ship pinnace cackle fruit line warp Admiral of the Black strike colors doubloon. Tackle Jack Ketch come about crimp rum draft scuppers run a shot across the bow haul wind maroon.</p>\n<p>Interloper heave down list driver pressgang holystone scuppers tackle scallywag bilged on her anchor. Jack Tar interloper draught grapple mizzenmast hulk knave cable transom hogshead. Gaff pillage to go on account grog aft chase guns piracy yardarm knave clap of thunder.</p>', 'posts/post4.jpg', 'yarr-post', 'this be a meta descript', 'keyword1, keyword2, keyword3', 'PUBLISHED', 0, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
 INSERT INTO `posts` VALUES (5, 2, 1, 'test', NULL, 'lllll;dfssssssl', '<p>asdfdsffasdfasdfasd</p>', NULL, 'test', NULL, NULL, 'PUBLISHED', 0, '2018-08-04 14:23:57', '2018-08-04 14:23:57');
 INSERT INTO `posts` VALUES (6, 2, 1, '标题奥i就', NULL, '摘要', '<p>文章内容</p>', NULL, 'qwer', NULL, NULL, 'PUBLISHED', 0, '2018-08-20 20:43:12', '2018-08-20 20:48:57');
+INSERT INTO `posts` VALUES (7, 2, 1, 'qewr', NULL, 'fqa we', '<p>saqfd&nbsp;</p>', 'posts\\August2018\\KXq943aYO9SBK0HxXJgI.jpg', 'qwertyu', NULL, NULL, 'PUBLISHED', 0, '2018-08-26 12:22:02', '2018-08-26 12:39:17');
 
 -- ----------------------------
 -- Table structure for projects
@@ -629,7 +630,7 @@ CREATE TABLE `projects`  (
   INDEX `user_id_project`(`user_id`) USING BTREE,
   CONSTRAINT `type_id_projects_type` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `user_id_project` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of projects
@@ -637,8 +638,7 @@ CREATE TABLE `projects`  (
 INSERT INTO `projects` VALUES (2, 'adgfas', '啊手动阀手动阀', 1, 2, '阿迪斯发倒萨倒萨', '阿迪斯广发速度发到四个', '阿斯蒂芬案说法', '啊手动阀为发', NULL, '2018-08-06 15:26:00', '2018-08-06 17:16:37');
 INSERT INTO `projects` VALUES (3, 'adgfasgdsf', 'asdfasdf', 1, 4, 'asdfadsf', 'asdfasdf', 'asdfasdfadsf', 'adsfasdfasdfawe', NULL, '2018-08-06 18:11:00', '2018-08-06 22:31:55');
 INSERT INTO `projects` VALUES (4, 'sdafsdfasdf', 'asdfolakjsdfjal;', 1, 4, 'joijlfjalskdjflj', 'asfladsfjjadsfldafs;a;al', 'ulj就奥斯丁解放了', '爱上了对方静安寺滴哦路观景', NULL, '2018-08-06 19:34:00', '2018-08-06 22:31:36');
-INSERT INTO `projects` VALUES (5, 'ajsiodfjj', 'oaisjdfoiajsoaio', 2, 1, 'asiodfjoadsifjao', 'aosijdgosidfjo', 'oiasdjfsdjfio', 'oasidjfoiadsfjo', NULL, '2018-08-06 19:43:47', '2018-08-06 19:43:47');
-INSERT INTO `projects` VALUES (6, 'oaijdfo', 'oaijo', 1, 2, 'oijao', 'oijo;a', 'oij;oj', 'oijoaj', '[{\"download_link\":\"projects\\\\August2018\\\\W7izZten0zA0oN93sCLo.pdf\",\"original_name\":\"GM_1_1_\\u6a21\\u578b\\u5728\\u9884\\u6d4b\\u4eba\\u53e3\\u51fa\\u751f\\u7387\\u7814\\u7a76\\u4e2d\\u7684\\u5e94\\u7528_\\u5f20\\u5929\\u826f.pdf\"}]', '2018-08-19 13:32:00', '2018-08-20 20:22:45');
+INSERT INTO `projects` VALUES (5, 'ajsiodfjj', 'oaisjdfoiajsoaio', 2, 1, 'asiodfjoadsifjao', 'aosijdgosidfjo', 'oiasdjfsdjfio', 'oasidjfoiadsfjo', '[{\"download_link\":\"projects\\\\August2018\\\\BurMrFMoPrIYrDeyp22Q.png\",\"original_name\":\"icons8-training-50.png\"}]', '2018-08-06 19:43:00', '2018-08-26 12:21:28');
 
 -- ----------------------------
 -- Table structure for roles
@@ -687,7 +687,7 @@ INSERT INTO `settings` VALUES (3, 'site.logo', 'Site Logo', '', '', 'image', 6, 
 INSERT INTO `settings` VALUES (4, 'site.google_analytics_tracking_id', 'Google Analytics Tracking ID', NULL, '', 'text', 7, 'Site');
 INSERT INTO `settings` VALUES (5, 'admin.bg_image', 'Admin Background Image', '', '', 'image', 5, 'Admin');
 INSERT INTO `settings` VALUES (6, 'admin.title', 'Admin Title', 'SSRPMP', '', 'text', 1, 'Admin');
-INSERT INTO `settings` VALUES (7, 'admin.description', 'Admin Description', 'Welcome to Voyager. The Missing Admin for Laravel', '', 'text', 2, 'Admin');
+INSERT INTO `settings` VALUES (7, 'admin.description', 'Admin Description', '学生科研项目管理平台', '', 'text', 2, 'Admin');
 INSERT INTO `settings` VALUES (8, 'admin.loader', 'Admin Loader', '', '', 'image', 3, 'Admin');
 INSERT INTO `settings` VALUES (9, 'admin.icon_image', 'Admin Icon Image', '', '', 'image', 4, 'Admin');
 INSERT INTO `settings` VALUES (10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', NULL, '', 'text', 1, 'Admin');
@@ -790,13 +790,10 @@ INSERT INTO `user_projects` VALUES (1, 4, NULL);
 INSERT INTO `user_projects` VALUES (2, 2, NULL);
 INSERT INTO `user_projects` VALUES (2, 3, NULL);
 INSERT INTO `user_projects` VALUES (2, 4, NULL);
-INSERT INTO `user_projects` VALUES (3, 6, NULL);
 INSERT INTO `user_projects` VALUES (4, 3, NULL);
 INSERT INTO `user_projects` VALUES (4, 4, NULL);
 INSERT INTO `user_projects` VALUES (4, 5, NULL);
-INSERT INTO `user_projects` VALUES (4, 6, NULL);
 INSERT INTO `user_projects` VALUES (5, 5, NULL);
-INSERT INTO `user_projects` VALUES (5, 6, NULL);
 
 -- ----------------------------
 -- Table structure for user_roles
@@ -838,7 +835,7 @@ CREATE TABLE `users`  (
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 1, 'Admin', 'admin@admin.com', 'users/default.png', '$2y$10$W7qLbaAJAh9lrS/FQJRJpuWAdSnhwt.qrLE1mTDolIUiVMn4v.GSm', 'pmH9djxnU5YtjpDx5xAVBtaLABv3lSwduDmRAbKxxklCRpa8CPKUVRLbZMtG', NULL, NULL, '2018-08-04 13:39:59', '2018-08-04 13:39:59');
-INSERT INTO `users` VALUES (2, 1, 'tian', '360726539@qq.com', 'users/default.png', '$2y$10$1fd4W8kKypvo7u16lLEjLua.RQ.aZtAQm7MTdtOOscnNTjfZ7nOcq', 'cflBskWvgrsfrVJMvSxHJfXAYRXRqTm06xZcbuoFVG1tNU1Q6mytFEIaHtER', '{\"locale\":\"zh_CN\"}', NULL, '2018-08-04 14:18:31', '2018-08-06 13:24:52');
+INSERT INTO `users` VALUES (2, 1, 'tian', '360726539@qq.com', 'users/default.png', '$2y$10$1fd4W8kKypvo7u16lLEjLua.RQ.aZtAQm7MTdtOOscnNTjfZ7nOcq', 'Bf3gktsfR4PFFBhfMszpPITy6KMVJf37LGcW0ityObTZ2EWzBNxPiMi1KFhN', '{\"locale\":\"zh_CN\"}', NULL, '2018-08-04 14:18:31', '2018-08-06 13:24:52');
 INSERT INTO `users` VALUES (3, 1, 'abcd', '1234@56789.com', 'users/default.png', '$2y$10$CzkeXpwXO1ROsWLb7ZWVU.A3kl6QiQjBtuD8I4w4dn5EbB17eFUVa', NULL, '{\"locale\":\"zh_CN\"}', NULL, '2018-08-06 19:39:38', '2018-08-06 19:39:38');
 INSERT INTO `users` VALUES (4, 2, '123@456.com', '123@456.com', 'users/default.png', '$2y$10$dAGSL34WZkgcxiq919zhi.i26zkuVLsABjy4bFwxCRRzpuKlSPq3e', 'kxXGPIeVIWn4ToN9jM856sbu6yJCMyk06QYrRSbdi2BU2dwFRCw7SjyIbPff', '{\"locale\":\"zh_CN\"}', NULL, '2018-08-06 19:42:33', '2018-08-20 14:52:37');
 INSERT INTO `users` VALUES (5, 3, '12@34.com', '12@34.com', 'users/default.png', '$2y$10$YDuu3fzcLMNWnWAb8D47perZn3S0KPMAzcjVS5D2hUIPV.EL2yF92', 'gYe4CaZS5uqjOPL7Kg3nRqjjAtd6B8irARrnxHA08MAu0yANBP6sfKjQchix', '{\"locale\":\"zh_CN\"}', NULL, '2018-08-06 19:42:57', '2018-08-20 14:52:53');
