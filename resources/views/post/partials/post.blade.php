@@ -1,5 +1,5 @@
 <div class="post-preview">
-  <a href="/post/{{ $post->slug }}">
+  <a href="/ssrpmp/post/{{ $post->slug }}">
     <h2 class="post-title">
       {{ $post->title }}
     </h2>

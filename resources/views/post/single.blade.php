@@ -6,7 +6,7 @@
 
 @section('blogheader')
  <!-- Page Header -->
-    <header class="masthead" style="background-image: url('/storage/{{ $post->image }}')">
+    <header class="masthead" style="background-image: url(/storage/{{ $post->image }})">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">

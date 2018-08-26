@@ -23,7 +23,7 @@
     @endforeach
 
     
-    {{ $posts->Links() }}
+    {{ $posts->Links('vendor.pagination.bootstrap-4') }}
 
   </div>
 </div>

@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'x/admin';
+    protected $redirectTo = 'ssrpmp/admin';
 
     /**
      * Create a new controller instance.
@@ -50,6 +50,6 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect('/x');
+        return redirect('/ssrpmp');
     }
 }

@@ -10,21 +10,28 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return view('kx');
+})->name('kx');
 
-Route::get('/x/', 'IndexController@index')->name('index');
+Route::get('/home', function () {
+    return redirect('/ssrpmp');
+});
+
+Route::get('/ssrpmp', 'IndexController@index')->name('index');
 
 // post route
-Route::get('/x/post/{slug}','PostController@show')->name('showpost');
-Route::get('/x/post', 'PostController@index')->name('post');
+Route::get('/ssrpmp/post/{slug}','PostController@show')->name('showpost');
+Route::get('/ssrpmp/post', 'PostController@index')->name('post');
 
-Route::group(['prefix' => 'x'], function () {
+Route::group(['prefix' => 'ssrpmp'], function () {
     Auth::routes();
 });
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::group(['prefix' => 'x/admin'], function () {
+Route::group(['prefix' => 'ssrpmp/admin'], function () {
     Voyager::routes();
 
     Route::get('/login', ['uses' => 'Auth\LoginController@showLoginForm', 'as' => 'voyager.login']);
