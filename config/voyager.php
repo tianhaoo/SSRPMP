@@ -15,7 +15,7 @@ return [
         'default_role'                 => 'user',
         'namespace'                    => null,
         'default_avatar'               => 'users/default.png',
-        'redirect'                     => 'x/admin',
+        'redirect'                     => 'ssrpmp/admin',
     ],
 
     /*
@@ -149,7 +149,7 @@ return [
                 'icon_class' => 'voyager-person',
             ],
             'Home' => [
-                'route'        => '/x',
+                'route'        => '/ssrpmp',
                 'icon_class'   => 'voyager-home',
                 'target_blank' => true,
             ],

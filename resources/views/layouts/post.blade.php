@@ -82,7 +82,7 @@
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="#">
+                <a href="https://github.com/tianhaoo">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -90,7 +90,7 @@
                 </a>
               </li>
             </ul>
-            <p class="copyright text-muted">Copyright &copy; Your Website 2018</p>
+            <p class="copyright text-muted">苏大计科院科协科研部 Copyright &copy; <a href="https://tianhaoo.github.io" target="blank">Tianhaoo</a></p>
           </div>
         </div>
       </div>
